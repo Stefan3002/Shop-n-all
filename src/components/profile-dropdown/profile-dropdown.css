@@ -1,0 +1,24 @@
+.profile-dropdown-container {
+  width: fit-content;
+  border-radius: 10px;
+  background: white;
+  padding: 1em;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 101;
+}
+.profile-dropdown-container .fa {
+  margin: 0.5em 0.3em;
+}
+.profile-dropdown-container .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+}
+.profile-dropdown-container .sign-out-button, .profile-dropdown-container .close-btn {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=profile-dropdown.css.map */

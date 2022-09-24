@@ -3,11 +3,30 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from 'react-router-dom'
+import {CheckoutContextProvider} from "./context/checkout/checkout";
+import {PopupContextProvider} from "./context/popup/popup";
+import {FavouritesContextProvider} from "./context/favourites/favourites";
+import {ItemsContextProvider} from "./context/items/items";
+import {Provider} from "react-redux";
+import {store} from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Provider store={store}>
+              <PopupContextProvider>
+                  <FavouritesContextProvider>
+                      <ItemsContextProvider>
+                          <CheckoutContextProvider>
+                              <App />
+                          </CheckoutContextProvider>
+                      </ItemsContextProvider>
+                  </FavouritesContextProvider>
+              </PopupContextProvider>
+          </Provider>
+      </BrowserRouter>
   </React.StrictMode>
 );
 

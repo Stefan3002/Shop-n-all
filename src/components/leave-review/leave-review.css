@@ -1,0 +1,17 @@
+.leave-review-container {
+  width: 50%;
+  margin: 0 auto;
+}
+.leave-review-container input, .leave-review-container textarea {
+  background: transparent;
+  border: 1px solid black;
+  font-family: "Montserrat Alternates", sans-serif;
+  padding: 1em;
+  margin: 0.4em 0;
+}
+.leave-review-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=leave-review.css.map */

@@ -1,0 +1,31 @@
+.cart-dropdown-container
+  position: fixed
+  right: 0
+  top: 0
+  max-height: 60%
+  overflow: auto
+  z-index: 101
+  text-align: center
+  background: white
+  border-radius: 10px
+  padding: 1em
+  display: flex
+  flex-direction: column
+  animation-name: slideLeft
+  animation-duration: .5s
+  img
+    width: 40%
+    height: 150px
+    border-radius: 50%
+  .total
+    margin-top: 1em
+    font-weight: 600
+    font-size: 1.4em
+  .no-items-img
+    width: 100%
+
+@keyframes slideLeft
+  0%
+    transform: translateX(100%)
+  100%
+    transform: translateX(0)

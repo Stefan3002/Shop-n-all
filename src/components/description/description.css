@@ -1,0 +1,12 @@
+.description-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .description-container {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=description.css.map */

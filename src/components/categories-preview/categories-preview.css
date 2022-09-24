@@ -1,0 +1,30 @@
+.shop-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.shop-container .shop-container-row {
+  display: flex;
+  margin: 1.4em 0;
+}
+.shop-container .latest-addition-text {
+  margin: 0 1em;
+  text-align: left;
+  font-size: 1.5em;
+}
+.shop-container .shop-container-text {
+  display: flex;
+  flex-direction: column;
+}
+.shop-container .shop-container-text .category-title {
+  margin: 1em;
+  color: black;
+  font-size: 2em;
+  border: 1px solid black;
+  padding: 1em;
+}
+
+/*# sourceMappingURL=categories-preview.css.map */

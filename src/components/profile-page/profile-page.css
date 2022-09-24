@@ -1,0 +1,27 @@
+.profile-container {
+  width: 80%;
+  text-align: center;
+  margin: 1em auto;
+}
+.profile-container img {
+  width: 50%;
+}
+.profile-container .profile-basic-info-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-container .profile-basic-info-container img {
+  border-radius: 50%;
+  width: 100%;
+}
+.profile-container .section {
+  margin: 2em 0;
+  display: flex;
+  justify-content: center;
+}
+.profile-container .favourite-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/*# sourceMappingURL=profile-page.css.map */

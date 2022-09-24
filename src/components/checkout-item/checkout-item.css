@@ -1,0 +1,21 @@
+.checkout-item-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 1em 0;
+}
+.checkout-item-container img {
+  border-radius: 10px;
+}
+.checkout-item-container .basic-info {
+  margin: 0 1em;
+}
+.checkout-item-container .fa {
+  margin: 0 0.4em;
+}
+.checkout-item-container .quantity-utils {
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=checkout-item.css.map */

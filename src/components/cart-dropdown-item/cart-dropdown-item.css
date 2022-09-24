@@ -1,0 +1,16 @@
+.cart-dropdown-item-container {
+  display: flex;
+  margin: 1em 0;
+}
+.cart-dropdown-item-container .text-container {
+  margin: 1em;
+  text-align: left;
+}
+.cart-dropdown-item-container .x-mark {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+/*# sourceMappingURL=cart-dropdown-item.css.map */

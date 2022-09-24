@@ -1,0 +1,18 @@
+.item-review-container {
+  background: white;
+  padding: 1em;
+  margin: 2em 0;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px black;
+}
+.item-review-container .display-name {
+  font-size: 1.2em;
+}
+.item-review-container .review-title {
+  font-size: 1.5em;
+  border: 1px solid black;
+  padding: 0.7em;
+  width: fit-content;
+}
+
+/*# sourceMappingURL=item-review.css.map */

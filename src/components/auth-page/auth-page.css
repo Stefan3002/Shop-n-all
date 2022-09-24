@@ -1,0 +1,22 @@
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 0;
+}
+
+.auth-container {
+  text-align: center;
+  padding: 1em;
+  background: white;
+  border-radius: 10px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.auth-container img {
+  margin: 1em 0;
+}
+
+/*# sourceMappingURL=auth-page.css.map */

@@ -1,0 +1,88 @@
+.item-container {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-name: pop-Up;
+  animation-duration: 0.3s;
+  position: relative;
+  margin: 1em 0.3em;
+  background: white;
+  display: flex;
+  box-shadow: 1px 1px 10px black;
+  transition: all 0.2s;
+  padding: 0.5em;
+}
+.item-container:hover {
+  box-shadow: 5px 1px 50px black;
+  transition: all 0.1s;
+}
+.item-container img {
+  width: 80%;
+  height: 55%;
+  min-width: 150px;
+  border-radius: 10px;
+}
+.item-container .utils {
+  z-index: 2;
+  text-align: center;
+}
+.item-container .utils i {
+  margin: 0 0.5em;
+}
+.item-container .item-price {
+  font-size: 1.4em;
+}
+.item-container .item-name {
+  color: #dca536;
+}
+.item-container .fa {
+  margin: 0 0.5em;
+}
+.item-container .bottom {
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-container .divider {
+  z-index: 1;
+}
+.item-container .main {
+  z-index: 2;
+}
+.item-container .custom-shape-divider-top-1663576759 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.item-container .custom-shape-divider-top-1663576759 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 51px;
+}
+.item-container .custom-shape-divider-top-1663576759 .shape-fill {
+  fill: #eae8e8;
+}
+.item-container .custom-shape-divider-bottom-1663576949 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+.item-container .custom-shape-divider-bottom-1663576949 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 51px;
+}
+.item-container .custom-shape-divider-bottom-1663576949 .shape-fill {
+  fill: #eae8e8;
+}
+
+/*# sourceMappingURL=item-card.css.map */

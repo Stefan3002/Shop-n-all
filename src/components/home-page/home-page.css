@@ -1,0 +1,27 @@
+.home-page-container {
+  background: url("../../utils/imgs/cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: 50% 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: whitesmoke;
+}
+.home-page-container .text {
+  display: flex;
+  flex-direction: column;
+}
+.home-page-container .text .title-container {
+  padding: 1em;
+  border: 10px solid whitesmoke;
+  font-size: 3.5em;
+  line-height: 10px;
+}
+.home-page-container .text .sign-in-button {
+  margin: 1em 0;
+}
+
+/*# sourceMappingURL=home-page.css.map */

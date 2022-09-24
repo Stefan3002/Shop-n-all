@@ -1,0 +1,38 @@
+.navigation-container {
+  width: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  animation-name: openRight;
+  animation-duration: 0.85s;
+  animation-fill-mode: forwards;
+  background: linear-gradient(to right, white, #e7e5e5);
+  border-radius: 10px;
+  margin: 1em 0;
+  padding: 1em;
+  list-style-type: none;
+}
+.navigation-container li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1em;
+}
+.navigation-container li .navigation-icon {
+  margin: 10px 0;
+}
+
+@keyframes openRight {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=navigation-bar-extension.css.map */

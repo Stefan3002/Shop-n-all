@@ -1,0 +1,1 @@
+export const getNavigationOpened = (state) => state.navigation.navigationOpened

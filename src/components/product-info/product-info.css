@@ -1,0 +1,48 @@
+.product-info-container {
+  width: 70%;
+  margin: 3em auto;
+}
+.product-info-container .basic-info-container {
+  display: flex;
+}
+.product-info-container .basic-info-container img {
+  border-radius: 10px;
+}
+.product-info-container .basic-info-container .aside-left {
+  display: flex;
+}
+.product-info-container .basic-info-container .aside-left .aside {
+  margin: 0 2em;
+}
+.product-info-container .basic-info-container .aside-left .aside .product-title {
+  font-size: 2.3em;
+}
+.product-info-container .basic-info-container .aside-left .aside .price {
+  font-size: 1.5em;
+}
+.product-info-container .reviews {
+  margin: 1em;
+}
+.product-info-container .heart {
+  margin: 0 1em;
+}
+.product-info-container .no-user-reviews {
+  text-align: center;
+}
+.product-info-container .no-user-reviews p {
+  margin: 2em 0;
+}
+.product-info-container .stars {
+  display: flex;
+}
+.product-info-container .fa {
+  margin: 0 0.3em;
+}
+
+@media screen and (max-width: 1000px) {
+  .product-info-container .basic-info-container {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=product-info.css.map */
