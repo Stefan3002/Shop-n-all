@@ -14,13 +14,13 @@
   padding: 1em;
   list-style-type: none;
 }
-.navigation-container li {
+.navigation-container .link-helper {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 1em;
 }
-.navigation-container li .navigation-icon {
+.navigation-container .link-helper .navigation-icon {
   margin: 10px 0;
 }
 

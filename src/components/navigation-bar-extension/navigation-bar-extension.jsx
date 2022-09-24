@@ -26,14 +26,14 @@ const NavigationBarExtension = () => {
         <div>
             <ul className='navigation-container'>
                 <li onClick={openCloseNavigation}><i className="fa fa-3x fa-solid fa-compass"></i></li>
-                <li><Link to='/' >Home </Link> <span className='navigation-icon'><i className="fa-xl fa-solid fa-house-chimney"></i></span></li>
-                <li><Link to='/shop' >Shop</Link><span className='navigation-icon'><i className=" fa-xl fa-solid fa-shop"></i></span></li>
-                <li><Link to='/about' >About</Link><span className='navigation-icon'><i
-                    className=" fa-xl fa-solid fa-circle-question"></i></span></li>
-                <li className='user-name' onClick={user ? openCloseProfile : null}><Link to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}</Link><span className='navigation-icon'><i
-                    className=" fa-xl fa-solid fa-user"></i></span></li>
-                {user ? <li><Link to='/favourites' >Favourites</Link><span className='navigation-icon'><i
-                    className="fa-xl fa-solid fa-shield-heart"></i></span></li> : null }
+                <li><Link className='link-helper' to='/' >Home  <span className='navigation-icon'><i className="fa-xl fa-solid fa-house-chimney"></i></span></Link></li>
+                <li><Link className='link-helper' to='/shop' >Shop<span className='navigation-icon'><i className=" fa-xl fa-solid fa-shop"></i></span></Link></li>
+                <li><Link className='link-helper' to='/about' >About<span className='navigation-icon'><i
+                    className=" fa-xl fa-solid fa-circle-question"></i></span></Link></li>
+                <li className='user-name' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><i
+                    className=" fa-xl fa-solid fa-user"></i></span></Link></li>
+                {user ? <li><Link className='link-helper' to='/favourites' >Favourites<span className='navigation-icon'><i
+                    className="fa-xl fa-solid fa-shield-heart"></i></span></Link></li> : null }
                 <li onClick={openCloseCart}><i
                     className="fa-xl fa-solid fa-cart-shopping"></i><span className='navigation-icon'>{items.length}</span></li>
             </ul>
