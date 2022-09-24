@@ -16,7 +16,7 @@ const NavigationBar = () => {
 
     const dispatch = useDispatch()
     const profileState = useSelector(getProfileOpened)
-    const {popUpText, poppedUp} = useContext(PopupContext)
+    const {popUpText, poppedUp, popUpType} = useContext(PopupContext)
     const {cartOpened} = useContext(CheckoutContext)
     const navigationOpened = useSelector(getNavigationOpened)
 
@@ -42,7 +42,7 @@ const NavigationBar = () => {
                 {navigationOpened ? <NavigationBarExtension /> : null}
             </div>
             {cartOpened ? <CartDropdown /> : null}
-            {poppedUp ? <PopUp text={popUpText} color='success'/> : null}
+            {poppedUp ? popUpType === 'error' ? <PopUp text={popUpText} color='fail'/> : <PopUp text={popUpText} color='success'/> : null}
             <Outlet />
         </Fragment>
 

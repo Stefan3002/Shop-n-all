@@ -5,11 +5,12 @@ import {PopupContext} from "../../context/popup/popup";
 const CartDropdownItem = ({data}) => {
     const {name, price, imageUrl} = data.item
     const {quantity} = data
-    const {setPoppedUp, setPopUpText} = useContext(PopupContext)
+    const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
     const {items, setItems} = useContext(CheckoutContext)
     const removeItemFromCart = () => {
         setPoppedUp(true)
         setPopUpText('Item removed from cart.')
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)

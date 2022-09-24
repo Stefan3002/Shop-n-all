@@ -9,13 +9,14 @@ import {setUser} from "../../store/profile/profile-actions";
 const HomePage = () => {
 
     const dispatch = useDispatch()
-    const {setPoppedUp, setPopUpText} = useContext(PopupContext)
+    const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
 
     const createAccountGoogleFace = async () => {
         const response = await createAccountGoogle()
         const userData = response.user
         setPopUpText(`Hello, ${userData.displayName}`)
         setPoppedUp(true)
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)

@@ -13,7 +13,7 @@ import {getUser} from "../../store/profile/profile-selectors";
 
 const ItemCard = ({item, animationDelay}) => {
     const {items, setItems} = useContext(CheckoutContext)
-    const {setPoppedUp, setPopUpText} = useContext(PopupContext)
+    const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
     const {name, imageUrl, price, id} = item
     const {setFavourites, favourites} = useContext(FavouritesContext)
     const user = useSelector(getUser)
@@ -30,6 +30,7 @@ const ItemCard = ({item, animationDelay}) => {
     const addToCart = () => {
         setPoppedUp(true)
         setPopUpText('Item added successfully to cart.')
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)
@@ -57,13 +58,14 @@ const ItemCard = ({item, animationDelay}) => {
             await updateDocument('favourites', newFavourites, user)
             setPoppedUp(true)
             setPopUpText('Item added to favourites.')
+            setPopUpType('success')
             setTimeout(() => {
                 setPoppedUp(false)
             }, 2500)
         }catch(err){
             setPoppedUp(true)
-            console.error(err)
-            setPopUpText('NOPE')
+            setPopUpText('An error occurred. Are you sure you are logged in?')
+            setPopUpType('error')
             setTimeout(() => {
                 setPoppedUp(false)
             }, 2500)
@@ -76,6 +78,7 @@ const ItemCard = ({item, animationDelay}) => {
         await updateDocument('favourites', newFavourites, user)
         setPoppedUp(true)
         setPopUpText('Item removed from favourites.')
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)

@@ -21,7 +21,7 @@ const ProductInfo = ({itemsArray}) => {
         const {productId, categoryTitle} = useParams()
         const {items, setItems} = useContext(ItemsContext)
         const item = itemsArray.find((item) => item.id == productId)
-        const {setPopUpText, setPoppedUp} = useContext(PopupContext)
+        const {setPopUpText, setPoppedUp, setPopUpType} = useContext(PopupContext)
         const {name, imageUrl, price, description} = item
         const user = useSelector(getUser)
         const starAverage = useSelector(getStarAverage)
@@ -40,6 +40,7 @@ const ProductInfo = ({itemsArray}) => {
     const addToCart = () => {
         setPoppedUp(true)
         setPopUpText('Item added successfully to cart.')
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)
@@ -66,13 +67,14 @@ const ProductInfo = ({itemsArray}) => {
             await updateDocument('favourites', newFavourites, user)
             setPoppedUp(true)
             setPopUpText('Item added to favourites.')
+            setPopUpType('success')
             setTimeout(() => {
                 setPoppedUp(false)
             }, 2500)
         }catch(err){
             setPoppedUp(true)
-            console.error(err)
-            setPopUpText('NOPE')
+            setPopUpText('An error occurred. Are you sure you are logged in?')
+            setPopUpType('error')
             setTimeout(() => {
                 setPoppedUp(false)
             }, 2500)
@@ -85,6 +87,7 @@ const ProductInfo = ({itemsArray}) => {
         await updateDocument('favourites', newFavourites, user)
         setPoppedUp(true)
         setPopUpText('Item removed from favourites.')
+        setPopUpType('success')
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)
