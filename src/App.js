@@ -5,21 +5,23 @@ import {Route, Routes} from 'react-router-dom'
 import AuthPage from "./components/auth-page/auth-page";
 import CheckoutPage from "./components/checkout-page/checkout-page";
 import FavouritesPage from "./components/favourites-page/favourites-page";
-import {useContext, useEffect} from "react";
-import {fetchCategoriesAndItems, onAuthStateChangeListener} from "./utils/firebase/firebase";
-import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {onAuthStateChangeListener} from "./utils/firebase/firebase";
+import {useDispatch, useSelector} from "react-redux";
 import {setCategories} from "./store/categories-actions";
 import ProfileRoutes from "./routes/profile-routes";
 import HomePage from "./components/home-page/home-page";
 import AboutPage from "./components/about-page/about-page";
 import {setUser} from "./store/profile/profile-actions";
+import {getCategoriesIsLoading} from "./store/categories-selectors";
+import Spinner from "./components/spinner/spinner";
 const App = () => {
     const dispatch = useDispatch()
+    const isLoading = useSelector(getCategoriesIsLoading)
 
     useEffect(() => {
         (async () => {
-            dispatch(setCategories(await fetchCategoriesAndItems()))
-            console.log("HI")
+            await setCategories(dispatch)
         })()
     }, [])
 
@@ -31,6 +33,7 @@ const App = () => {
 
   return(
       <div>
+          {isLoading ? <Spinner /> : null}
         <Routes>
             <Route path='/'  element={<NavigationBar />}>
                 <Route path='/' element={<HomePage />}/>
