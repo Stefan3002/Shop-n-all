@@ -19,11 +19,6 @@ const App = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector(getCategoriesIsLoading)
 
-    useEffect(() => {
-        (async () => {
-            await setCategories(dispatch)
-        })()
-    }, [])
 
     useEffect(() => {
         onAuthStateChangeListener((user) => {

@@ -41,7 +41,8 @@ export const createUserDoc = async (userData) => {
             displayName,
             email,
             favourites: [],
-            createdAt
+            createdAt,
+            uid
         })
         return docRef
     }
@@ -60,6 +61,12 @@ export const retrieveFavourites = async (user) => {
     return userSnap.data().favourites
 }
 
+export const retrieveUserData = async (uid) => {
+    const docRef = doc(db, 'users', uid)
+    const docSnap = await getDoc(docRef)
+    return docSnap.data()
+}
+
 
 
 export const fetchCategoriesAndItems = async () => {
@@ -74,8 +81,9 @@ export const fetchCategoriesAndItems = async () => {
 }
 
 export const addReviewToDocument = async (user,stars ,reviewBody, reviewTitle, productId, categoryTitle) => {
-    const {displayName} = user
+    const {displayName, uid} = user
 
+    //For the item itself
     const docRef = doc(db, 'categories', categoryTitle.toLowerCase())
     const docSnap = await getDoc(docRef)
     const items = docSnap.data().items
@@ -93,8 +101,10 @@ export const addReviewToDocument = async (user,stars ,reviewBody, reviewTitle, p
     //For decimals
     starsAverage /= foundItem.reviews.length + 1
 
+    const userDocRef = doc(db,'users', uid)
+
     //+ 1 is to accommodate for the current review that has not been written to db
-    foundItem.reviews.push({displayName,stars ,reviewTitle, reviewBody, addedAt})
+    foundItem.reviews.push({displayName,stars ,reviewTitle, reviewBody, addedAt, user: userDocRef})
 
     if(!foundItem.starAverage)
         foundItem.starAverage = 0
@@ -103,6 +113,17 @@ export const addReviewToDocument = async (user,stars ,reviewBody, reviewTitle, p
 
     await updateDoc(docRef, {
         items
+    })
+
+    //For the user
+    const userDocSnap = await getDoc(userDocRef)
+    const userData = userDocSnap.data()
+    if(!("reviews" in userData))
+        userData.reviews = []
+    const {imageUrl, name} = foundItem
+    userData.reviews.push({displayName,stars ,reviewTitle, reviewBody, addedAt, item: {imageUrl, name}})
+    await updateDoc(userDocRef, {
+        ...userData
     })
 
     return {
@@ -115,6 +136,21 @@ export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, 
 
 export const signOutHandler = () => signOut(auth)
 
+
+export const addAddressToDB = async (country, address, user) => {
+    const userDocRef = doc(db, 'users', user.uid)
+    const userDocSnap = await getDoc(userDocRef)
+    const userData = userDocSnap.data()
+    if(!('address' in userData))
+        userData.address = {}
+    userData.address = {
+        country,
+        address
+    }
+    await updateDoc(userDocRef, {
+        ...userData
+    })
+}
 
 
 // export const createCollectionAndDocument = async (collectionKey, objectsToAdd) => {

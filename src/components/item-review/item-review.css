@@ -1,4 +1,5 @@
 .item-review-container {
+  text-align: left;
   background: white;
   padding: 1em;
   margin: 2em 0;
@@ -13,6 +14,17 @@
   border: 1px solid black;
   padding: 0.7em;
   width: fit-content;
+}
+.item-review-container .item-content {
+  display: flex;
+  justify-content: space-between;
+}
+.item-review-container .item-img {
+  text-align: center;
+  margin-top: -4em;
+}
+.item-review-container .item-img img {
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=item-review.css.map */

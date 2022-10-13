@@ -1,5 +1,5 @@
 import './item-review.css'
-const ItemReview = ({data}) => {
+const ItemReview = ({data, imageUrl, itemName}) => {
     const {displayName, reviewBody, reviewTitle, stars} = data
     return (
         <div className='item-review-container'>
@@ -11,8 +11,16 @@ const ItemReview = ({data}) => {
             {stars >= 5 ? <i className="fa-solid fa-star"></i> : null}
 
             {/*<p className='date'>{addedAt.toString()}</p>*/}
-            <h3 className='review-title'>{reviewTitle}</h3>
-            <p className='review-body'>{reviewBody}</p>
+            <div className="item-content">
+                <div className="item-text">
+                    <h3 className='review-title'>{reviewTitle}</h3>
+                    <p className='review-body'>{reviewBody}</p>
+                </div>
+                <div className="item-img">
+                    {itemName ? <p>{itemName}</p> : null}
+                    {imageUrl ? <img src={imageUrl} alt=""/> : null}
+                </div>
+            </div>
         </div>
     )
 }

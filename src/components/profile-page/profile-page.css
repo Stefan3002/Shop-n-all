@@ -23,5 +23,28 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.profile-container .profile-menu {
+  background: white;
+  padding: 1em;
+  list-style-type: none;
+  border-radius: 10px;
+}
+.profile-container .profile-menu .profile-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.4em;
+  cursor: pointer;
+  padding: 0.5em;
+  transition: all 0.2s;
+}
+.profile-container .profile-menu .profile-menu-item:hover {
+  background: orange;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.profile-container .profile-menu .profile-menu-item .fa {
+  margin-right: 0.3em;
+}
 
 /*# sourceMappingURL=profile-page.css.map */
