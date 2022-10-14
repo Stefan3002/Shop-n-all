@@ -14,15 +14,21 @@ import {PopupContext} from "../../context/popup/popup";
 import {FavouritesContext} from "../../context/favourites/favourites";
 import {updateDocument} from "../../utils/firebase/firebase";
 import {getUser} from "../../store/profile/profile-selectors";
+import missingImg from '../../utils/imgs/question.svg'
+import moneySVG from '../../utils/imgs/money-svgrepo-com.svg'
+import packageSVG from '../../utils/imgs/package-svgrepo-com.svg'
+import customerSVG from '../../utils/imgs/customer-service-help-svgrepo-com.svg'
 
 
 const ProductInfo = ({itemsArray}) => {
 
         const {productId, categoryTitle} = useParams()
         const {items, setItems} = useContext(ItemsContext)
-        const item = itemsArray.find((item) => item.id == productId)
+        let item = {}
+        if(itemsArray)
+            item = itemsArray.find((item) => item.id == productId)
         const {setPopUpText, setPoppedUp, setPopUpType} = useContext(PopupContext)
-        const {name, imageUrl, price, description} = item
+        const {name, imageUrl, price, description, characteristics} = item
         const user = useSelector(getUser)
         const starAverage = useSelector(getStarAverage)
         const dispatch = useDispatch()
@@ -120,8 +126,38 @@ const ProductInfo = ({itemsArray}) => {
                             <i onClick={addToFavourites} className="fa fa-xl fa-regular fa-heart"></i>}
                     </div>
                 </div>
-
-                <Description text={description} />
+                <div className="aside-content">
+                    <Description text={description} />
+                    <h2>Characteristics. </h2>
+                    {characteristics ? Object.keys(characteristics).map((characteristic) => {
+                        return <div>
+                            <p>{characteristic[0].toUpperCase()}{characteristic.slice(1)} : {characteristics[characteristic]}</p>
+                        </div>
+                    }): <img src={missingImg} alt=""/>}
+                </div>
+            </div>
+            <div className="benefits">
+                <div className='benefit1 benefit'>
+                    <div className='benefit-header'>
+                        <img src={moneySVG} alt=""/>
+                        <h2>30 days money back.</h2>
+                    </div>
+                    <p>On our website anything you buy and don't like or does not fit can be returned in 30 days and you will get your money back.</p>
+                </div>
+                <div className='benefit benefit2'>
+                    <div className='benefit-header'>
+                        <img src={packageSVG} alt=""/>
+                        <h2>Open the package before you pay.</h2>
+                    </div>
+                    <p>You can always open the package before you pay the courier. Just ask him and he will be glad to help you.</p>
+                </div>
+                <div className='benefit benefit3'>
+                    <div className='benefit-header'>
+                        <img src={customerSVG} alt=""/>
+                        <h2>Permanent customer support.</h2>
+                    </div>
+                    <p>You can call us anytime, any day and we will try our best to help you! You can find the customer support telephone number in the "contact" page.</p>
+                </div>
             </div>
 
             {

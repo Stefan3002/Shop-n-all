@@ -4,6 +4,9 @@ import defaultImg from '../../utils/imgs/defaultImg.svg'
 import ItemCard from "../item-card/item-card";
 import noAddressImg from '../../utils/imgs/address.svg'
 import {addAddressToDB} from "../../utils/firebase/firebase";
+import moneySVG from "../../utils/imgs/money-svgrepo-com.svg";
+import packageSVG from "../../utils/imgs/package-svgrepo-com.svg";
+import customerSVG from "../../utils/imgs/customer-service-help-svgrepo-com.svg";
 const ProfileInfoContainer = ({type, content, user}) => {
 
     const addAddress = async (event) => {
@@ -16,9 +19,38 @@ const ProfileInfoContainer = ({type, content, user}) => {
     return (
         <div className='profile-info-container'>
             {type === 'default' ? <div><p>Select a category to view your info.</p><img src={defaultImg} alt=""/></div> : null}
-            {type === 'reviews' ? content.map((data) => {
+            {type === 'reviews' ? <div className='profile-reviews-container'>
+                {
+                content.map((data) => {
                 return <ItemReview data={data} imageUrl={data.item.imageUrl} itemName={data.item.name} />
-            }) : null}
+            })}
+            </div>: null}
+            {type === 'benefits' ? <div>
+                <h2>Regular benefits.</h2>
+                <div className="benefits">
+                    <div className='benefit1 benefit'>
+                        <div className='benefit-header'>
+                            <img src={moneySVG} alt=""/>
+                            <h2>30 days money back.</h2>
+                        </div>
+                        <p>On our website anything you buy and don't like or does not fit can be returned in 30 days and you will get your money back.</p>
+                    </div>
+                    <div className='benefit benefit2'>
+                        <div className='benefit-header'>
+                            <img src={packageSVG} alt=""/>
+                            <h2>Open the package before you pay.</h2>
+                        </div>
+                        <p>You can always open the package before you pay the courier. Just ask him and he will be glad to help you.</p>
+                    </div>
+                    <div className='benefit benefit3'>
+                        <div className='benefit-header'>
+                            <img src={customerSVG} alt=""/>
+                            <h2>Permanent customer support.</h2>
+                        </div>
+                        <p>You can call us anytime, any day and we will try our best to help you! You can find the customer support telephone number in the "contact" page.</p>
+                    </div>
+                </div>
+            </div>: null}
             {type === 'addresses' ? <div>
                 <p>Here are your addresses: </p>
                 {content === undefined ? <div>

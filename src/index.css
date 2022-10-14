@@ -1,24 +1,61 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/*#F5B453*/
 
+/*#F5B453*/
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 .thin-text {
   font-weight: 200;
 }
-.colored{
-  color: #C89933
+
+.colored {
+  color: #C89933;
 }
-.bg-colored{
+
+.bg-colored {
   background: #C89933;
 }
+
+.benefits {
+  display: flex;
+}
+.benefits .benefit {
+  border-radius: 10px;
+  margin-left: 0.5em;
+  margin-top: 0.7em;
+  padding: 1em;
+  text-align: justify;
+}
+.benefits .benefit .benefit-header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+.benefits .benefit img {
+  width: 80px;
+}
+.benefits .benefit1 {
+  background: linear-gradient(to right, whitesmoke, orange);
+}
+.benefits .benefit2 {
+  background: linear-gradient(to left, whitesmoke, #6ec4da);
+}
+.benefits .benefit3 {
+  background: linear-gradient(to left, whitesmoke, lightgreen);
+}
+
+@media screen and (max-width: 1000px) {
+  .benefits {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -25,6 +25,8 @@
 }
 .item-review-container .item-img img {
   border-radius: 10px;
+  width: 100px;
+  height: 130px;
 }
 
 /*# sourceMappingURL=item-review.css.map */

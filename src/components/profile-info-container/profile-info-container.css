@@ -5,5 +5,21 @@
   justify-content: center;
   gap: 1.5em;
 }
+.profile-info-container .profile-reviews-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+@media screen and (max-width: 1500px) {
+  .profile-info-container .profile-reviews-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile-info-container .profile-reviews-container {
+    grid-template-columns: 1fr;
+  }
+}
 
 /*# sourceMappingURL=profile-info-container.css.map */
