@@ -18,10 +18,10 @@ import missingImg from '../../utils/imgs/question.svg'
 import moneySVG from '../../utils/imgs/money-svgrepo-com.svg'
 import packageSVG from '../../utils/imgs/package-svgrepo-com.svg'
 import customerSVG from '../../utils/imgs/customer-service-help-svgrepo-com.svg'
+import ItemCard from "../item-card/item-card";
 
 
 const ProductInfo = ({itemsArray}) => {
-
         const {productId, categoryTitle} = useParams()
         const {items, setItems} = useContext(ItemsContext)
         let item = {}
@@ -34,6 +34,16 @@ const ProductInfo = ({itemsArray}) => {
         const dispatch = useDispatch()
 
         const {setFavourites, favourites} = useContext(FavouritesContext)
+        const indexes = []
+
+        const no_other_products = 4;
+        if(itemsArray)
+            for(let i = 0; i < no_other_products; i++) {
+                let index = Math.floor(Math.random() * itemsArray.length) - 1 + 1
+                while(indexes.includes(index))
+                    index = Math.floor(Math.random() * itemsArray.length) - 1 + 1
+                indexes.push(index)
+            }
 
     useEffect(() => {
         const reviews = item.reviews
@@ -173,6 +183,14 @@ const ProductInfo = ({itemsArray}) => {
 
             <div className="reviews">
                 {user ? <LeaveReview productId={productId} categoryTitle={categoryTitle} /> : <div className='no-user-reviews'><p>To add a review, please log in.</p><img src={noUserImage} alt=""/></div>}
+            </div>
+            <div className="other-products-container">
+                <h2 className='title'>Other similar products.</h2>
+                <div className="products">
+                    {indexes.map((index) => {
+                        return <ItemCard item={itemsArray[index]} />
+                    })}
+                </div>
             </div>
         </div>
     )

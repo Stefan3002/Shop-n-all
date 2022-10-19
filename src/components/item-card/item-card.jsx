@@ -14,11 +14,18 @@ import {getUser} from "../../store/profile/profile-selectors";
 const ItemCard = ({item, animationDelay}) => {
     const {items, setItems} = useContext(CheckoutContext)
     const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
-    const {name, imageUrl, price, id} = item
+    let name, imageUrl, price, id
+    if(item) {
+        name = item.name
+        imageUrl = item.imageUrl
+        price = item.price
+        id = item.id
+    }
     const {setFavourites, favourites} = useContext(FavouritesContext)
     const user = useSelector(getUser)
-
-    const starAverage = item.starAverage
+    let starAverage = 1
+    if(item)
+         starAverage = item.starAverage
 
     useEffect(() => {
         (async () => {
@@ -91,7 +98,8 @@ const ItemCard = ({item, animationDelay}) => {
 
 
     return (
-            <div className='item-container' style={{'animationDelay' : `${animationDelay}00ms`}}>
+        <>
+            {item ? <div className='item-container' style={{'animationDelay' : `${animationDelay}00ms`}}>
                 <div className="divider">
                     <div className="custom-shape-divider-top-1663576759">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -133,7 +141,10 @@ const ItemCard = ({item, animationDelay}) => {
                         </svg>
                     </div>
                 </div>
-            </div>
+
+            </div> : null}
+        </>
+
     )
 }
 export default ItemCard

@@ -1,4 +1,11 @@
 .product-info-container
+  .other-products-container
+    .products
+      display: flex
+      justify-content: center
+      gap: .7em
+    .title
+      font-size: 2em
   width: 70%
   margin: 3em auto
   .basic-info-container
@@ -34,3 +41,15 @@
   .product-info-container
     .basic-info-container
       flex-direction: column
+  .product-info-container
+    .other-products-container
+      .products
+        grid-template-columns: 1fr
+
+@media screen and (max-width: 1500px)
+  .product-info-container
+    .other-products-container
+      .products
+        display: grid
+        grid-template-columns: 1fr 1fr
+        gap: 0

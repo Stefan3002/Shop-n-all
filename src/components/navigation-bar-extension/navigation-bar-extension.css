@@ -23,6 +23,9 @@
 .navigation-container .link-helper .navigation-icon {
   margin: 10px 0;
 }
+.navigation-container img {
+  width: 40px;
+}
 
 @keyframes openRight {
   0% {

@@ -19,7 +19,7 @@
 .item-container img {
   width: 80%;
   height: 55%;
-  min-width: 150px;
+  min-width: 190px;
   border-radius: 10px;
 }
 .item-container .utils {
@@ -49,6 +49,9 @@
 }
 .item-container .main {
   z-index: 2;
+}
+.item-container .stars {
+  display: grid;
 }
 .item-container .custom-shape-divider-top-1663576759 {
   position: absolute;

@@ -28,5 +28,13 @@
   width: 100px;
   height: 130px;
 }
+.item-review-container .review-header {
+  display: flex;
+}
+.item-review-container .review-header img {
+  border-radius: 50%;
+  margin: 0 1em 0 0;
+  width: 100px;
+}
 
 /*# sourceMappingURL=item-review.css.map */

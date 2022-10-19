@@ -1,0 +1,19 @@
+.footer-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding: 1em;
+}
+.footer-container .footer-category-container h2 {
+  margin: 0.3em 1em;
+  color: orange;
+}
+.footer-container .footer-category-container ul {
+  list-style-type: none;
+}
+.footer-container .footer-category-container ul li {
+  margin: 0.4em 0;
+}
+
+/*# sourceMappingURL=footer.css.map */

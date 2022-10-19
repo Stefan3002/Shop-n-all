@@ -11,6 +11,7 @@ import ProfileDropdown from "../profile-dropdown/profile-dropdown";
 import NavigationBarExtension from "../navigation-bar-extension/navigation-bar-extension";
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
 import {getNavigationOpened} from "../../store/navigation/navigation-selectors";
+import compassSVG from '../../utils/imgs/CompassSVG.svg'
 
 const NavigationBar = () => {
 
@@ -38,7 +39,7 @@ const NavigationBar = () => {
             }
 
             <div className='navigation'>
-                {navigationOpened ? null : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-compass"></i></div>}
+                {navigationOpened ? null : <div className='menu-icon'><img onClick={openCloseNavigation} src={compassSVG} alt=""/></div>}
                 {navigationOpened ? <NavigationBarExtension /> : null}
             </div>
             {cartOpened ? <CartDropdown /> : null}
