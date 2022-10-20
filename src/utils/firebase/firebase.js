@@ -152,13 +152,52 @@ export const addAddressToDB = async (country, address, user) => {
     })
 }
 
+export const getAddresses = async (user) => {
+    if(user) {
+        const {uid} = user
+        const docRef = doc(db, 'users', uid)
+        const docSnap = await getDoc(docRef)
+        return docSnap.data().address
+    }
+}
 
-// export const createCollectionAndDocument = async (collectionKey, objectsToAdd) => {
-//     const collectionRef = collection(db, collectionKey)
-//     const batch = writeBatch(db)
-//     objectsToAdd.forEach((object) => {
-//         const docRef = doc(collectionRef,object.id)
-//         batch.set(docRef, object)
-//     })
-//     await batch.commit()
-// }
+export const addOrderToDB = async (items, user) => {
+    const {uid} = user
+    const createdAt = new Date()
+    const ID = uid + createdAt.getSeconds()
+    const ordersRef = doc(db, 'orders', ID)
+    await setDoc(ordersRef, {
+        id: ID,
+        userId: uid,
+        date: createdAt,
+        items
+    })
+    const userRef = doc(db, 'users', uid)
+    const userSnap = await getDoc(userRef)
+    const userData = userSnap.data()
+
+    let userOrders = userData.orders
+
+    if(!userOrders)
+        userOrders = []
+
+    userOrders.push({
+        id: ID,
+        userId: uid,
+        date: createdAt,
+        items
+    })
+    console.log(userOrders)
+    await updateDoc(userRef, {
+        ...userData,
+        orders: userOrders
+    })
+
+}
+
+export const getUserOrders = async (user) => {
+    const {uid} = user
+    const userRef = doc(db, 'users', uid)
+    const userSnap = await getDoc(userRef)
+    return userSnap.data().orders
+}

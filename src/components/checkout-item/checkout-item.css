@@ -9,12 +9,22 @@
 }
 .checkout-item-container .basic-info {
   margin: 0 1em;
+  text-align: center;
 }
 .checkout-item-container .fa {
   margin: 0 0.4em;
 }
 .checkout-item-container .quantity-utils {
   display: flex;
+  align-items: center;
+}
+.checkout-item-container .money-icon {
+  width: 50px;
+  margin: 0 0.8em 0 0;
+}
+.checkout-item-container .quantity-container {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

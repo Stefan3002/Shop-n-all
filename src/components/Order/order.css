@@ -1,0 +1,15 @@
+.order-container {
+  display: flex;
+}
+.order-container .order-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.order-container .order-items img {
+  border-radius: 50%;
+  width: 200px;
+}
+
+/*# sourceMappingURL=order.css.map */

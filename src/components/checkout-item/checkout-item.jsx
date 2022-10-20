@@ -2,6 +2,8 @@ import './checkout-item.css'
 import {useContext} from "react";
 import {PopupContext} from "../../context/popup/popup";
 import {CheckoutContext} from "../../context/checkout/checkout";
+import moneySVG from '../../utils/imgs/MoneySVG.svg'
+
 const CheckoutItem = ({data}) => {
     const {imageUrl, name, price} = data.item
     const {quantity} = data
@@ -42,7 +44,7 @@ const CheckoutItem = ({data}) => {
             <img src={imageUrl} alt=""/>
             <div className="basic-info">
                 <h2>{name}</h2>
-                <p><i className="fa fa-2x fa-solid fa-sack-dollar"></i>{quantity} x {price} $ = {quantity * price}</p>
+                <p className='quantity-container'><img className='money-icon' src={moneySVG} alt=""/>{quantity} x {price} $ = {quantity * price}</p>
             </div>
             <div className="utils">
                 <div className="quantity-utils">

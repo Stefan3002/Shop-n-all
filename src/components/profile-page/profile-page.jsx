@@ -2,7 +2,7 @@ import './profile-page.css'
 import greetingsImg from '../../utils/imgs/hello.svg'
 import {useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
-import {retrieveUserData, signOutHandler} from "../../utils/firebase/firebase";
+import {getUserOrders, retrieveUserData, signOutHandler} from "../../utils/firebase/firebase";
 import ProfileInfoContainer from "../profile-info-container/profile-info-container";
 import {useState} from "react";
 
@@ -46,7 +46,11 @@ const ProfilePage = () => {
     const benefitsInfo = () => {
         setTypeOfInfo('benefits')
         setContentInfo('')
-
+    }
+    const ordersInfo = async () => {
+        const userOrders = await getUserOrders(user)
+        setTypeOfInfo('orders')
+        setContentInfo(userOrders)
     }
 
 
@@ -61,7 +65,7 @@ const ProfilePage = () => {
                         <li className='profile-menu-item' onClick={reviewsInfo}><i className="fa fa-2x fa-solid fa-star"></i>Reviews.</li>
                         <li className='profile-menu-item' onClick={favouritesInfo}><i className="fa fa-2x fa-solid fa-heart"></i>Favourites.</li>
                         <li className='profile-menu-item' onClick={benefitsInfo}><i className="fa fa-2x fa-solid fa-check"></i>Benefits.</li>
-                        <li className='profile-menu-item'><i className="fa fa-2x fa-solid fa-newspaper"></i>Orders.</li>
+                        <li className='profile-menu-item' onClick={ordersInfo}><i className="fa fa-2x fa-solid fa-newspaper"></i>Orders.</li>
                         <li className='profile-menu-item' onClick={addressesInfo}><i className="fa fa-2x fa-solid fa-map-location-dot"></i>Addresses.</li>
                         <li className='profile-menu-item' onClick={signOutHandler}><i className="fa fa-2x fa-solid fa-right-from-bracket"></i>Sign Out.</li>
                     </ul>

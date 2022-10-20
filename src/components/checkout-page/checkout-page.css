@@ -2,6 +2,9 @@
   width: 80%;
   margin: 1em auto;
 }
+.checkout-page-container .addresses-selector .address-container {
+  display: flex;
+}
 .checkout-page-container .aside {
   border: 1px solid white;
   background: white;
