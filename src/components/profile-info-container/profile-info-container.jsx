@@ -9,12 +9,18 @@ import customerSVG from "../../utils/imgs/customer-service-help-svgrepo-com.svg"
 import AddressInput from "../AddressInput/address-input";
 import Order from "../Order/order";
 import Button from "../button/button";
+import missingSVG from '../../utils/imgs/noFavourites.svg'
+
 const ProfileInfoContainer = ({type, content, user}) => {
 
     return (
         <div className='profile-info-container'>
-            {type === 'default' ? <div><p>Select a category to view your info.</p><img src={defaultImg} alt=""/></div> : null}
-            {type === 'reviews' ? <div className='profile-reviews-container'>
+            {!content && type !== 'benefits' ? <div>
+                <h2>There is nothing to see here!</h2>
+                <img src={missingSVG} />
+            </div> : null }
+            {content && type === 'default' ? <div><p>Select a category to view your info.</p><img src={defaultImg} alt=""/></div> : null}
+            {content && type === 'reviews' ? <div className='profile-reviews-container'>
                 {
                 content.map((data) => {
                 return <ItemReview data={data} imageUrl={data.item.imageUrl} itemName={data.item.name} />
@@ -46,7 +52,7 @@ const ProfileInfoContainer = ({type, content, user}) => {
                     </div>
                 </div>
             </div>: null}
-            {type === 'addresses' ? <div>
+            {content && type === 'addresses' ? <div>
                 <p>Here are your addresses: </p>
                 {content === undefined ? <div>
                     <img src={noAddressImg} alt=""/>
@@ -55,10 +61,10 @@ const ProfileInfoContainer = ({type, content, user}) => {
                 </div>}
                 <AddressInput />
             </div> : null}
-            {type === 'favourites' ? content.map((data) => {
+            {content && type === 'favourites' ? content.map((data) => {
                 return <ItemCard item={data} itemDelay='0' />
             }): null}
-            {type === 'orders' ? <div>
+            {content && type === 'orders' ? <div>
                 {content.map((order) => {
                     return <Order order={order} />
                 })}
