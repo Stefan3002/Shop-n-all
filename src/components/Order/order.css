@@ -1,15 +1,33 @@
 .order-container {
+  background: white;
+  padding: 1em;
+  border-radius: 10px;
+  transition: all 0.2s;
+  margin: 1em 0;
+}
+.order-container:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: all 0.2s;
+}
+.order-container .items-info {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .order-container .order-items {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 1em;
   justify-content: center;
   align-items: center;
   gap: 1em;
 }
 .order-container .order-items img {
   border-radius: 50%;
-  width: 200px;
+  width: 160px;
+  height: 160px;
 }
 
 /*# sourceMappingURL=order.css.map */

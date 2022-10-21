@@ -10,7 +10,7 @@
   display: flex;
   box-shadow: 1px 1px 10px black;
   transition: all 0.2s;
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.5em 1em;
 }
 .item-container:hover {
   box-shadow: 5px 1px 50px black;

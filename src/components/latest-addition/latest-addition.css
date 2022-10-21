@@ -1,5 +1,6 @@
 .latest-addition-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 /*# sourceMappingURL=latest-addition.css.map */

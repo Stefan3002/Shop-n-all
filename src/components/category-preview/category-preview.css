@@ -1,4 +1,6 @@
 .category-preview-container {
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 .category-preview-container img {

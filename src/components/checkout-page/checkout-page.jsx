@@ -19,8 +19,8 @@ const CheckoutPage = () => {
         })()
     }, [])
 
-    const createOrder = () => {
-        addOrderToDB(items, user)
+    const createOrder = async () => {
+        await addOrderToDB(items, user)
     }
 
 

@@ -14,20 +14,11 @@ const LatestAddition = ({categoryTitle, items}) => {
 
     useEffect(() => {
         console.log(windowWidth)
-        if(windowWidth > 3200)
-            numberOfAdditions.current = 15
-        else
-            if(windowWidth > 2500)
-                numberOfAdditions.current = 9
-        else
-            if(windowWidth > 2000)
-                numberOfAdditions.current = 8
-        else
             if(windowWidth > 1500)
-                numberOfAdditions.current = 6
+                numberOfAdditions.current = 15
             else
             if(windowWidth > 1000)
-                numberOfAdditions.current = 4
+                numberOfAdditions.current = 5
             else
                 numberOfAdditions.current = 2
 

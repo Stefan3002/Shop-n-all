@@ -1,8 +1,5 @@
 import './categories-preview.css'
-import ItemCard from "../item-card/item-card";
 import CategoryPreview from "../category-preview/category-preview";
-import {useContext} from "react";
-import {CategoriesContext} from "../../context/categories";
 import LatestAddition from "../latest-addition/latest-addition";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
