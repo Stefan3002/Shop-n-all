@@ -1,5 +1,7 @@
 import './order.css'
-const Order = ({order}) => {
+import Button from "../button/button";
+import {Link} from "react-router-dom";
+const Order = ({order, seeMore, cancelButton, sendBackButton, priceInfo}) => {
     const {items} = order
     return (
         <div className='order-container'>
@@ -10,12 +12,21 @@ const Order = ({order}) => {
             </div>
             <div className="items-info">
                 {items.map((item) => {
-                    return <div className='order-items'>
-                        <h2>{item.quantity} x {item.item.name}</h2>
-                        <img src={item.item.imageUrl} alt=""/>
-                    </div>
+                    return <Link to={`/shop/${item.item.category}/${item.item.id}`}>
+                        <div className='order-items'>
+                            <h2>{item.quantity} x {item.item.name}</h2>
+                            <img src={item.item.imageUrl} alt=""/>
+                            {priceInfo ? <p>{item.item.price} $</p> : null}
+                        </div>
+                    </Link>
                 })}
             </div>
+            <div className="buttons-container">
+                {seeMore ? <Link to={`/orders/${order.id}`}><Button color='orange' text='See more.' /></Link> : null}
+                {cancelButton ? <Button color='crimson' text='Cancel order.' /> : null}
+                {sendBackButton ? <Button color='crimson' text='Send back the order.' /> : null}
+            </div>
+
         </div>
     )
 }

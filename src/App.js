@@ -16,6 +16,7 @@ import {getCategoriesIsLoading} from "./store/categories-selectors";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer.tsx";
 import {getUser} from "./store/profile/profile-selectors";
+import OrdersRoute from "./components/orders-route/orders-route";
 
 const App = () => {
     const dispatch = useDispatch()
@@ -38,8 +39,9 @@ const App = () => {
                     <Route path='/auth' element={<AuthPage />}/>
                     <Route path='/checkout' element={<CheckoutPage />}/>
                     <Route path='/favourites' element={<FavouritesPage />}/>
-                    <Route path='/profile' element={<ProfileRoutes />}/>
+                    <Route path='/profile/*' element={<ProfileRoutes />}/>
                     <Route path='/about' element={<AboutPage />}/>
+                    <Route path='/orders/*' element={<OrdersRoute/>}/>
                 </Route>
             </Route>
         </Routes>

@@ -3,6 +3,7 @@ import {collection, doc, getDoc, getDocs, getFirestore, query, setDoc, updateDoc
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
 import {getCartTotal} from "../../context/checkout/checkout";
+import order from "../../components/Order/order";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -186,13 +187,8 @@ export const addOrderToDB = async (items, user) => {
 
     userOrders.push({
         id: ID,
-        userId: uid,
-        date: createdAt,
-        items,
-        status: 'pending',
-        total: getCartTotal(items)
+        orderRef: ordersRef
     })
-    console.log(userOrders)
     await updateDoc(userRef, {
         ...userData,
         orders: userOrders
@@ -204,5 +200,19 @@ export const getUserOrders = async (user) => {
     const {uid} = user
     const userRef = doc(db, 'users', uid)
     const userSnap = await getDoc(userRef)
-    return userSnap.data().orders
+    const orders = []
+    for (const order of userSnap.data().orders) {
+        const {id} = order
+        const orderRef = doc(db, 'orders', id)
+        const orderSnap = await getDoc(orderRef)
+        orders.push(orderSnap.data())
+    }
+    return orders
+}
+
+export const getOrder = async (orderID) => {
+    console.log(123)
+    const orderRef = doc(db, 'orders', orderID)
+    const orderSnap = await getDoc(orderRef)
+    return orderSnap.data()
 }

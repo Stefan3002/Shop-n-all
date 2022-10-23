@@ -16,7 +16,7 @@ const ProfilePage = () => {
 
 
     const [typeOfInfo, setTypeOfInfo] = useState('default')
-    const [contentInfo, setContentInfo] = useState('')
+    const [contentInfo, setContentInfo] = useState([])
     let displayName = '', email = ''
     if(user){
         displayName = user.displayName
@@ -53,7 +53,6 @@ const ProfilePage = () => {
         setContentInfo(userOrders)
     }
 
-
     return (
         <div className='profile-container'>
             <div className='section'>
@@ -65,7 +64,7 @@ const ProfilePage = () => {
                         <li className='profile-menu-item' onClick={reviewsInfo}><i className="fa fa-2x fa-solid fa-star"></i>Reviews.</li>
                         <li className='profile-menu-item' onClick={favouritesInfo}><i className="fa fa-2x fa-solid fa-heart"></i>Favourites.</li>
                         <li className='profile-menu-item' onClick={benefitsInfo}><i className="fa fa-2x fa-solid fa-check"></i>Benefits.</li>
-                        <li className='profile-menu-item' onClick={ordersInfo}><i className="fa fa-2x fa-solid fa-newspaper"></i>Orders.</li>
+                        <li className='profile-menu-item' onClick={() => ordersInfo()}><i className="fa fa-2x fa-solid fa-newspaper"></i>Orders.</li>
                         <li className='profile-menu-item' onClick={addressesInfo}><i className="fa fa-2x fa-solid fa-map-location-dot"></i>Addresses.</li>
                         <li className='profile-menu-item' onClick={signOutHandler}><i className="fa fa-2x fa-solid fa-right-from-bracket"></i>Sign Out.</li>
                     </ul>

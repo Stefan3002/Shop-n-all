@@ -1,14 +1,21 @@
 .profile-dropdown-container
   width: fit-content
-  border-radius: 10px
+  border-radius: 10px 0 0 10px
   background: white
   padding: 1em
   position: fixed
-  left: 50%
-  top: 50%
-  transform: translate(-50%, -50%)
+  right: 0
   text-align: center
   z-index: 101
+  animation-name: slideLeft
+  animation-duration: .3s
+  .profile-dropdown-button-container
+    img
+      width: 50px
+      margin: 0 .5em 0 0
+    display: flex
+    align-items: center
+    justify-content: center
   .fa
     margin: .5em .3em
   .avatar-img

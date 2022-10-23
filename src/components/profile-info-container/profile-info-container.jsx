@@ -7,20 +7,19 @@ import moneySVG from "../../utils/imgs/money-svgrepo-com.svg";
 import packageSVG from "../../utils/imgs/package-svgrepo-com.svg";
 import customerSVG from "../../utils/imgs/customer-service-help-svgrepo-com.svg";
 import AddressInput from "../AddressInput/address-input";
-import Order from "../Order/order";
-import Button from "../button/button";
 import missingSVG from '../../utils/imgs/noFavourites.svg'
+import Orders from "../orders/orders.tsx";
+import Order from "../Order/order";
 
 const ProfileInfoContainer = ({type, content, user}) => {
-
     return (
         <div className='profile-info-container'>
-            {!content && type !== 'benefits' ? <div>
+            {content.length <= 0 && type !== 'benefits' ? <div>
                 <h2>There is nothing to see here!</h2>
                 <img src={missingSVG} />
             </div> : null }
-            {content && type === 'default' ? <div><p>Select a category to view your info.</p><img src={defaultImg} alt=""/></div> : null}
-            {content && type === 'reviews' ? <div className='profile-reviews-container'>
+            {content.length > 0 && type === 'default' ? <div><p>Select a category to view your info.</p><img src={defaultImg} alt=""/></div> : null}
+            {content.length > 0 && type === 'reviews' ? <div className='profile-reviews-container'>
                 {
                 content.map((data) => {
                 return <ItemReview data={data} imageUrl={data.item.imageUrl} itemName={data.item.name} />
@@ -52,7 +51,7 @@ const ProfileInfoContainer = ({type, content, user}) => {
                     </div>
                 </div>
             </div>: null}
-            {content && type === 'addresses' ? <div>
+            {content.length > 0 && type === 'addresses' ? <div>
                 <p>Here are your addresses: </p>
                 {content === undefined ? <div>
                     <img src={noAddressImg} alt=""/>
@@ -61,18 +60,19 @@ const ProfileInfoContainer = ({type, content, user}) => {
                 </div>}
                 <AddressInput />
             </div> : null}
-            {content && type === 'favourites' ? content.map((data) => {
+            {content.length > 0 && type === 'favourites' ? content.map((data) => {
                 return <ItemCard item={data} itemDelay='0' />
             }): null}
-            {content && type === 'orders' ? <div>
+
+            {content.length > 0 && type === 'orders' ? <div>
                 {content.map((order) => {
-                    return <Order order={order} />
+                    return <Order key={order.id} order={order} seeMore={true} sendBackButton={false} priceInfo={false} />
                 })}
-                <Button text='See more.' />
             </div>: null}
         </div>
     )
 }
+//I add random comment and save.
 export default ProfileInfoContainer
 
 
