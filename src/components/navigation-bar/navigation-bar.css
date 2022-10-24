@@ -1,13 +1,22 @@
 .navigation {
-  background: linear-gradient(to right, #eeee42, orange);
+  background: #1e1e23;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 160px;
 }
+.navigation .logo-img {
+  z-index: 100;
+}
+.navigation .logo-img img {
+  height: 135%;
+}
 .navigation .menu-icon {
+  color: white;
   z-index: 100;
   cursor: pointer;
+  position: absolute;
+  left: 10px;
 }
 .navigation .logo {
   width: 100px;
@@ -35,7 +44,7 @@
 }
 
 .custom-shape-divider-top-1663860861 .shape-fill {
-  fill: rgba(227, 227, 50, 0.3);
+  fill: #23232a;
 }
 
 /*# sourceMappingURL=navigation-bar.css.map */

@@ -1,0 +1,16 @@
+.highlight-container {
+  color: whitesmoke;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 10px 0 0 10px;
+  background: #1e1e23;
+  padding: 1em 0.5em 1em 1em;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: center;
+  writing-mode: vertical-lr;
+}
+
+/*# sourceMappingURL=highlight.css.map */

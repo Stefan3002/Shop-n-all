@@ -115,7 +115,7 @@ const ItemCard = ({item, animationDelay}) => {
                     </Link>
                     {/*<i className="fa fa-xl fa-solid fa-cart-plus"></i>*/}
                     <div className="bottom">
-                        <Button text='Add to cart.' color='#dca536' clickHandler={addToCart}/>
+                        <Button dividers={true} text='Add to cart.' color='#dca536' clickHandler={addToCart}/>
                         {user && alreadyInFavourites() ? <i onClick={removeItemFromFavourites} className="fa fa-xl fa-solid fa-heart"></i> : <i onClick={addToFavourites} className="fa fa-xl fa-regular fa-heart"></i>}
                     </div>
                 </div>

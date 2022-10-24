@@ -12,6 +12,8 @@ import NavigationBarExtension from "../navigation-bar-extension/navigation-bar-e
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
 import {getNavigationOpened} from "../../store/navigation/navigation-selectors";
 import compassSVG from '../../utils/imgs/CompassSVG.svg'
+import Blur from "../blur/blur";
+import logoIMG from '../../utils/imgs/LogoIMG.png'
 
 const NavigationBar = () => {
 
@@ -39,8 +41,8 @@ const NavigationBar = () => {
             }
 
             <div className='navigation'>
-                {navigationOpened ? null : <div className='menu-icon'><img onClick={openCloseNavigation} src={compassSVG} alt=""/></div>}
-                {navigationOpened ? <NavigationBarExtension /> : null}
+                {navigationOpened ? <div><Blur /><NavigationBarExtension /></div> : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-bars"></i></div>}
+                <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
             </div>
             {cartOpened ? <CartDropdown /> : null}
             {poppedUp ? popUpType === 'error' ? <PopUp text={popUpText} color='fail'/> : <PopUp text={popUpText} color='success'/> : null}

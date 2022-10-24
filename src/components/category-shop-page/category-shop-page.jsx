@@ -2,8 +2,9 @@ import './category-shop-page.css'
 import ItemCard from "../item-card/item-card";
 import {useContext, useEffect, useState} from "react";
 import {ItemsContext} from "../../context/items/items";
+import Highlight from "../Highlight/highlight.tsx";
 
-const CategoryShopPage = ({itemsArray}) => {
+const CategoryShopPage = ({itemsArray, categoryTitle}) => {
     const {setItems} = useContext(ItemsContext)
     const sortHelper = (attr, rev) => (x, y) => {
         if(!x)
@@ -37,6 +38,7 @@ const CategoryShopPage = ({itemsArray}) => {
 
     return (
         <div className='category-shop-page-container'>
+            <Highlight text={categoryTitle} />
             <div className='sort-options-container'>
                 <p>Sort:</p>
                 <select defaultValue='select' onChange={sortHandler} name="" id="">

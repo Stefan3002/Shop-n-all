@@ -14,7 +14,7 @@ const SpecificShopPage = () => {
     return (
         <Routes>
             <Route path='/:productId' element={<ProductInfo itemsArray={items} />} />
-            <Route index element={<CategoryShopPage itemsArray={items} />} />
+            <Route index element={<CategoryShopPage itemsArray={items} categoryTitle={categoryTitle} />} />
         </Routes>
     )
 }

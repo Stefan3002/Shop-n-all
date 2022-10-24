@@ -1,5 +1,5 @@
 const INITIAL_VALUE = {
-    navigationOpened: true
+    navigationOpened: false
 }
 
 export const timeToClose = 1

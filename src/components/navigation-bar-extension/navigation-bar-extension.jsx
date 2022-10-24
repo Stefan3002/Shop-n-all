@@ -33,7 +33,7 @@ const NavigationBarExtension = () => {
     return (
         <div>
             <ul className='navigation-container'>
-                <li onClick={openCloseNavigation}><img src={compassSVG} alt=""/></li>
+                <li onClick={openCloseNavigation}><i className="menu-close-btn fa fa-3x fa-solid fa-circle-xmark"></i></li>
                 <li><Link className='link-helper' to='/' >Home  <span className='navigation-icon'><img src={houseSVG} alt=""/></span></Link></li>
                 <li><Link className='link-helper' to='/shop' >Shop<span className='navigation-icon'><img src={shopSVG}
                                                                                                          alt=""/></span></Link></li>

@@ -1,8 +1,9 @@
 .footer-container {
+  color: whitesmoke;
+  background: #1e1e23;
   text-align: center;
   display: flex;
   justify-content: center;
-  background: white;
   padding: 1em;
 }
 .footer-container .footer-category-container h2 {

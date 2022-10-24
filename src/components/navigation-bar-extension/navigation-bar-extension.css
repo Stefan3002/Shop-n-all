@@ -1,16 +1,20 @@
 .navigation-container {
+  color: whitesmoke;
+  z-index: 101;
   width: 0;
-  opacity: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
   justify-content: space-between;
   overflow: hidden;
   animation-name: openRight;
-  animation-duration: 0.85s;
+  animation-duration: 0.2s;
   animation-fill-mode: forwards;
-  background: linear-gradient(to right, white, #e7e5e5);
-  border-radius: 10px;
-  margin: 1em 0;
+  background: linear-gradient(to bottom, #18181d, #151518);
+  border-radius: 0 10px 10px 0;
   padding: 1em;
   list-style-type: none;
 }
@@ -18,7 +22,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 1em;
+  transition: 0.2s;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+.navigation-container .link-helper:hover {
+  background: #46464d;
+  transition: 0.2s;
 }
 .navigation-container .link-helper .navigation-icon {
   margin: 10px 0;
@@ -26,15 +36,20 @@
 .navigation-container img {
   width: 40px;
 }
+.navigation-container .menu-close-btn {
+  transition: 0.2s;
+}
+.navigation-container .menu-close-btn:hover {
+  color: #46464d;
+  transition: 0.15s;
+}
 
 @keyframes openRight {
   0% {
     width: 0;
-    opacity: 0;
   }
   100% {
-    width: 100%;
-    opacity: 1;
+    width: fit-content;
   }
 }
 

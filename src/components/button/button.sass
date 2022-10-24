@@ -1,8 +1,22 @@
 $font: 'Montserrat Alternates', sans-serif
 .button-container
+  position: relative
   font-family: $font
   background: transparent
   //border: 1px solid #dca536
-  padding: 1em
+  padding: 1em 1em 1em 1em
   //color: #dca536
   cursor: pointer
+  &:hover
+    .divider-top
+      height: 15px
+      transition: .2s
+  .divider-top
+    transition: .2s
+    position: absolute
+    top: 0
+    left: 0
+    background: #1e1e23
+    border-radius: 0 0 5px 5px
+    height: 3px
+    width: calc(100%)
