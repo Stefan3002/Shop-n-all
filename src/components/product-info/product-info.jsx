@@ -18,7 +18,12 @@ import missingImg from '../../utils/imgs/question.svg'
 import moneySVG from '../../utils/imgs/money-svgrepo-com.svg'
 import packageSVG from '../../utils/imgs/package-svgrepo-com.svg'
 import customerSVG from '../../utils/imgs/customer-service-help-svgrepo-com.svg'
+import likeSVG from '../../utils/imgs/LikeSVG.svg'
+import disLikeSVG from '../../utils/imgs/dislike.svg'
+import sosoSVG from '../../utils/imgs/sosoSVG.svg'
+import questionSVG from '../../utils/imgs/QuestionSVG.svg'
 import ItemCard from "../item-card/item-card";
+import {computeMedianCustomersThatRecommendProduct} from "../../utils/methods/item";
 
 
 const ProductInfo = ({itemsArray}) => {
@@ -52,6 +57,9 @@ const ProductInfo = ({itemsArray}) => {
     }, [])
 
     const itemReviews = useSelector(getReviews)
+    let percentOfCustomers = 0
+    if(itemReviews)
+        percentOfCustomers = computeMedianCustomersThatRecommendProduct(itemReviews)
 
     const addToCart = () => {
         setPoppedUp(true)
@@ -115,84 +123,94 @@ const ProductInfo = ({itemsArray}) => {
     }
 
     return (
-        <div className='product-info-container'>
-            <div className='basic-info-container'>
-                <div className="aside-left">
-                    <img src={imageUrl} alt=""/>
-                    <div className='aside'>
-                        <h2 className='product-title'>{name}</h2>
-                        <div className="stars">
-                            {starAverage >= 1 ? <i className="fa-solid fa-star"></i> : null}
-                            {starAverage >= 2 ? <i className="fa-solid fa-star"></i> : null}
-                            {starAverage >= 3 ? <i className="fa-solid fa-star"></i> : null}
-                            {starAverage >= 4 ? <i className="fa-solid fa-star"></i> : null}
-                            {starAverage >= 5 ? <i className="fa-solid fa-star"></i> : null}
-                            <p>{starAverage} / 5</p>
+        <>
+            <div className='basic-info-container-bg'>
+                <div className='basic-info-container'>
+                    <div className="aside-left">
+                        <img src={imageUrl} alt=""/>
+                        <div className='aside'>
+                            <h2 className='product-title'>{name}</h2>
+                            <div className="stars">
+                                {starAverage >= 1 ? <i className="fa-solid fa-star"></i> : null}
+                                {starAverage >= 2 ? <i className="fa-solid fa-star"></i> : null}
+                                {starAverage >= 3 ? <i className="fa-solid fa-star"></i> : null}
+                                {starAverage >= 4 ? <i className="fa-solid fa-star"></i> : null}
+                                {starAverage >= 5 ? <i className="fa-solid fa-star"></i> : null}
+                                <p>{starAverage} / 5</p>
+                            </div>
+                            <p className='price'>{price}$</p>
+                            <Button color='white' clickHandler={addToCart} text='Add to cart.'/>
+                            {user && alreadyInFavourites() ?
+                                <i onClick={removeItemFromFavourites} className="fa fa-xl fa-solid fa-heart"></i> :
+                                <i onClick={addToFavourites} className="fa fa-xl fa-regular fa-heart"></i>}
                         </div>
-                        <p className='price'>{price}$</p>
-                        <Button color='#dca536' clickHandler={addToCart} text='Add to cart.'/>
-                        {user && alreadyInFavourites() ?
-                            <i onClick={removeItemFromFavourites} className="fa fa-xl fa-solid fa-heart"></i> :
-                            <i onClick={addToFavourites} className="fa fa-xl fa-regular fa-heart"></i>}
+                    </div>
+                    <div className="aside-content">
+                        <Description text={description} />
+                        <h2>Characteristics. </h2>
+                        {characteristics ? Object.keys(characteristics).map((characteristic) => {
+                            return <div>
+                                <p>{characteristic[0].toUpperCase()}{characteristic.slice(1)} : {characteristics[characteristic]}</p>
+                            </div>
+                        }): <img className='missing-img' src={missingImg} alt=""/>}
                     </div>
                 </div>
-                <div className="aside-content">
-                    <Description text={description} />
-                    <h2>Characteristics. </h2>
-                    {characteristics ? Object.keys(characteristics).map((characteristic) => {
-                        return <div>
-                            <p>{characteristic[0].toUpperCase()}{characteristic.slice(1)} : {characteristics[characteristic]}</p>
+            </div>
+
+            <div className='product-info-container'>
+
+                <div className="benefits">
+                    <div className='benefit1 benefit'>
+                        <div className='benefit-header'>
+                            <img src={moneySVG} alt=""/>
+                            <h2>30 days money back.</h2>
                         </div>
-                    }): <img src={missingImg} alt=""/>}
-                </div>
-            </div>
-            <div className="benefits">
-                <div className='benefit1 benefit'>
-                    <div className='benefit-header'>
-                        <img src={moneySVG} alt=""/>
-                        <h2>30 days money back.</h2>
+                        <p>On our website anything you buy and don't like or does not fit can be returned in 30 days and you will get your money back.</p>
                     </div>
-                    <p>On our website anything you buy and don't like or does not fit can be returned in 30 days and you will get your money back.</p>
-                </div>
-                <div className='benefit benefit2'>
-                    <div className='benefit-header'>
-                        <img src={packageSVG} alt=""/>
-                        <h2>Open the package before you pay.</h2>
+                    <div className='benefit benefit2'>
+                        <div className='benefit-header'>
+                            <img src={packageSVG} alt=""/>
+                            <h2>Open the package before you pay.</h2>
+                        </div>
+                        <p>You can always open the package before you pay the courier. Just ask him and he will be glad to help you.</p>
                     </div>
-                    <p>You can always open the package before you pay the courier. Just ask him and he will be glad to help you.</p>
-                </div>
-                <div className='benefit benefit3'>
-                    <div className='benefit-header'>
-                        <img src={customerSVG} alt=""/>
-                        <h2>Permanent customer support.</h2>
+                    <div className='benefit benefit3'>
+                        <div className='benefit-header'>
+                            <img src={customerSVG} alt=""/>
+                            <h2>Permanent customer support.</h2>
+                        </div>
+                        <p>You can call us anytime, any day and we will try our best to help you! You can find the customer support telephone number in the "contact" page.</p>
                     </div>
-                    <p>You can call us anytime, any day and we will try our best to help you! You can find the customer support telephone number in the "contact" page.</p>
                 </div>
-            </div>
-
-            {
-                itemReviews ? <div className='reviews-container'>
-                    {
-                        itemReviews.map((itemReview) => {
-                            return <ItemReview key={itemReview.reviewTitle} data={itemReview} />
-                        })
-                    }
-                </div> : null
-            }
+                <div className="percent-customers">
+                    {percentOfCustomers > 0 ? percentOfCustomers >= 70 ? <img src={likeSVG} alt=""/> : percentOfCustomers > 40 ? <img src={sosoSVG} alt=""/> : <img src={disLikeSVG} alt=""/> : null}
+                    {percentOfCustomers > 0 ? <p><span className='highlighted'>{percentOfCustomers}%</span> of customers recommend this product!</p> : null }
+                </div>
+                {
+                    itemReviews ? <div className='reviews-container'>
+                        {
+                            itemReviews.map((itemReview) => {
+                                return <ItemReview key={itemReview.reviewTitle} data={itemReview} />
+                            })
+                        }
+                    </div> : null
+                }
 
 
-            <div className="reviews">
-                {user ? <LeaveReview productId={productId} categoryTitle={categoryTitle} /> : <div className='no-user-reviews'><p>To add a review, please log in.</p><img src={noUserImage} alt=""/></div>}
-            </div>
-            <div className="other-products-container">
-                <h2 className='title'>Other similar products.</h2>
-                <div className="products">
-                    {indexes.map((index) => {
-                        return <ItemCard item={itemsArray[index]} />
-                    })}
+                <div className="reviews">
+                    {user ? <LeaveReview productId={productId} categoryTitle={categoryTitle} /> : <div className='no-user-reviews'><p>To add a review, please log in.</p><img src={noUserImage} alt=""/></div>}
+                </div>
+                <div className="other-products-container">
+                    <h2 className='title'>Other similar products.</h2>
+                    <div className="products">
+                        {indexes.map((index) => {
+                            return <ItemCard item={itemsArray[index]} />
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
 

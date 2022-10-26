@@ -25,6 +25,14 @@
   font-weight: bold;
   line-height: 0;
 }
+.navigation .cart-icon {
+  color: whitesmoke;
+  position: absolute;
+  right: 10px;
+}
+.navigation .cart-icon img {
+  width: 50px;
+}
 
 .custom-shape-divider-top-1663860861 {
   position: absolute;

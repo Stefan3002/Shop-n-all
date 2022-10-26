@@ -1,4 +1,6 @@
 .footer-container {
+  margin-top: 7em;
+  position: relative;
   color: whitesmoke;
   background: #1e1e23;
   text-align: center;
@@ -15,6 +17,27 @@
 }
 .footer-container .footer-category-container ul li {
   margin: 0.4em 0;
+}
+
+.custom-shape-divider-top-1666795932 {
+  position: absolute;
+  top: -130px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  rotate: 180deg;
+}
+
+.custom-shape-divider-top-1666795932 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.custom-shape-divider-top-1666795932 .shape-fill {
+  fill: #1e1e23;
 }
 
 /*# sourceMappingURL=footer.css.map */

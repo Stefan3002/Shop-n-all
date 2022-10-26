@@ -12,6 +12,12 @@ const Footer: React.FC = (props: FooterProps) => {
         <>
             <Outlet />
             <div className='footer-container'>
+                <div className="custom-shape-divider-top-1666795932">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                         preserveAspectRatio="none">
+                        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>
+                    </svg>
+                </div>
                 <div className="footer-category-container">
                     <h2>Client benefits.</h2>
                     <ul>

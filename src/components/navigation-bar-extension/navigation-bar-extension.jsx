@@ -13,37 +13,35 @@ import questionSVG from '../../utils/imgs/QuestionSVG.svg'
 import shopSVG from '../../utils/imgs/ShopSVG.svg'
 import houseSVG from '../../utils/imgs/HouseSVG.svg'
 import heartSVG from '../../utils/imgs/heartSVG.svg'
-import cartSVG from '../../utils/imgs/CartSVG.svg'
-import compassSVG from "../../utils/imgs/CompassSVG.svg";
+
 
 
 const NavigationBarExtension = () => {
     const dispatch = useDispatch()
     const profileState = useSelector(getProfileOpened)
-    const {items, cartOpened, setCartOpened} = useContext(CheckoutContext)
     const user = useSelector(getUser)
     const navigationOpened = useSelector(getNavigationOpened)
 
     const openCloseNavigation = () => navigationOpened ? setTimeout(() => dispatch(setNavigationOpened(false)), timeToClose) : dispatch(setNavigationOpened(true))
 
-    const openCloseCart = () => cartOpened ? setCartOpened(false) : setCartOpened(true)
-
-    const openCloseProfile = () => profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
+    const openCloseProfile = () => {
+        openCloseNavigation()
+        profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
+    }
 
     return (
         <div>
             <ul className='navigation-container'>
                 <li onClick={openCloseNavigation}><i className="menu-close-btn fa fa-3x fa-solid fa-circle-xmark"></i></li>
-                <li><Link className='link-helper' to='/' >Home  <span className='navigation-icon'><img src={houseSVG} alt=""/></span></Link></li>
-                <li><Link className='link-helper' to='/shop' >Shop<span className='navigation-icon'><img src={shopSVG}
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/' >Home  <span className='navigation-icon'><img src={houseSVG} alt=""/></span></Link></li>
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/shop' >Shop<span className='navigation-icon'><img src={shopSVG}
                                                                                                          alt=""/></span></Link></li>
-                <li><Link className='link-helper' to='/about' >About<span className='navigation-icon'><img src={questionSVG}
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/about' >About<span className='navigation-icon'><img src={questionSVG}
                                                                                                            alt=""/></span></Link></li>
                 <li className='user-name' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
                     src={userSVG} alt=""/></span></Link></li>
-                {user ? <li><Link className='link-helper' to='/favourites' >Favourites<span className='navigation-icon'><img
+                {user ? <li onClick={openCloseNavigation}><Link className='link-helper' to='/favourites' >Favourites<span className='navigation-icon'><img
                     src={heartSVG} alt=""/></span></Link></li> : null }
-                <li onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></li>
             </ul>
         </div>
     )

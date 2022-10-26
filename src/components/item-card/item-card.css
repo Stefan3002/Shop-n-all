@@ -10,7 +10,7 @@
   display: flex;
   box-shadow: 1px 1px 10px black;
   transition: all 0.2s;
-  padding: 0.5em 0.5em 0.5em 1em;
+  padding: 0.5em 0.5em 0 1em;
 }
 .item-container:hover {
   box-shadow: 5px 1px 50px black;
@@ -86,7 +86,7 @@
   height: 51px;
 }
 .item-container .custom-shape-divider-bottom-1663576949 .shape-fill {
-  fill: #eae8e8;
+  fill: #1e1e23;
 }
 
 /*# sourceMappingURL=item-card.css.map */
