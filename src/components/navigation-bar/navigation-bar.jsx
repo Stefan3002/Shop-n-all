@@ -6,7 +6,7 @@ import PopUp from "../pop-up/pop-up";
 import {CheckoutContext} from "../../context/checkout/checkout";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import {useDispatch, useSelector} from "react-redux";
-import {getProfileOpened} from "../../store/profile/profile-selectors";
+import {getProfileOpened, getUser} from "../../store/profile/profile-selectors";
 import ProfileDropdown from "../profile-dropdown/profile-dropdown";
 import NavigationBarExtension from "../navigation-bar-extension/navigation-bar-extension";
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
@@ -14,6 +14,8 @@ import {getNavigationOpened} from "../../store/navigation/navigation-selectors";
 import Blur from "../blur/blur";
 import logoIMG from '../../utils/imgs/LogoIMG.png'
 import cartSVG from "../../utils/imgs/CartSVG.svg";
+import userSVG from "../../utils/imgs/UserSVG.svg";
+import {setProfileOpened} from "../../store/profile/profile-actions";
 
 const NavigationBar = () => {
 
@@ -28,7 +30,12 @@ const NavigationBar = () => {
     const openCloseNavigation = () => navigationOpened ? dispatch(setNavigationOpened(false)) : dispatch(setNavigationOpened(true))
 
     const openCloseCart = () => cartOpened ? setCartOpened(false) : setCartOpened(true)
+    const openCloseProfile = () => {
+        openCloseNavigation()
+        profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
+    }
 
+    const user = useSelector(getUser)
 
     return (
         <div className='body-container'>
@@ -48,8 +55,11 @@ const NavigationBar = () => {
             <div className='navigation'>
                 {navigationOpened ? <div><Blur /><NavigationBarExtension /></div> : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-bars"></i></div>}
                 <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
-                <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
-
+                <div className="right-icons">
+                    <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
+                    <div className='user-icon' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
+                        src={userSVG} alt=""/></span></Link></div>
+                </div>
             </div>
             {cartOpened ? <CartDropdown /> : null}
             {poppedUp ? popUpType === 'error' ? <PopUp text={popUpText} color='fail'/> : <PopUp text={popUpText} color='success'/> : null}

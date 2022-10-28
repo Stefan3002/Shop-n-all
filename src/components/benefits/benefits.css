@@ -1,0 +1,36 @@
+.benefits {
+  display: flex;
+}
+.benefits .benefit {
+  border-radius: 10px;
+  margin-left: 0.5em;
+  margin-top: 0.7em;
+  padding: 1em;
+  text-align: justify;
+}
+.benefits .benefit .benefit-header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+.benefits .benefit img {
+  width: 80px;
+}
+.benefits .benefit1 {
+  background: linear-gradient(to right, whitesmoke, orange);
+}
+.benefits .benefit2 {
+  background: linear-gradient(to left, whitesmoke, #6ec4da);
+}
+.benefits .benefit3 {
+  background: linear-gradient(to left, whitesmoke, lightgreen);
+}
+
+@media screen and (max-width: 1000px) {
+  .benefits {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=benefits.css.map */

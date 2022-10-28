@@ -1,0 +1,26 @@
+.benefits
+  display: flex
+  .benefit
+    border-radius: 10px
+    margin-left: .5em
+    margin-top: .7em
+    padding: 1em
+    //max-width: 400px
+    text-align: justify
+    .benefit-header
+      text-align: center
+      display: flex
+      justify-content: center
+      gap: 1em
+    img
+      width: 80px
+  .benefit1
+    background: linear-gradient(to right, whitesmoke, orange)
+  .benefit2
+    background: linear-gradient(to left, whitesmoke, #6ec4da)
+  .benefit3
+    background: linear-gradient(to left, whitesmoke, lightgreen)
+
+@media screen and (max-width: 1000px)
+  .benefits
+    flex-direction: column

@@ -24,6 +24,7 @@ import sosoSVG from '../../utils/imgs/sosoSVG.svg'
 import questionSVG from '../../utils/imgs/QuestionSVG.svg'
 import ItemCard from "../item-card/item-card";
 import {computeMedianCustomersThatRecommendProduct} from "../../utils/methods/item";
+import Benefits from "../benefits/benefits";
 
 
 const ProductInfo = ({itemsArray}) => {
@@ -158,30 +159,8 @@ const ProductInfo = ({itemsArray}) => {
             </div>
 
             <div className='product-info-container'>
+                <Benefits />
 
-                <div className="benefits">
-                    <div className='benefit1 benefit'>
-                        <div className='benefit-header'>
-                            <img src={moneySVG} alt=""/>
-                            <h2>30 days money back.</h2>
-                        </div>
-                        <p>On our website anything you buy and don't like or does not fit can be returned in 30 days and you will get your money back.</p>
-                    </div>
-                    <div className='benefit benefit2'>
-                        <div className='benefit-header'>
-                            <img src={packageSVG} alt=""/>
-                            <h2>Open the package before you pay.</h2>
-                        </div>
-                        <p>You can always open the package before you pay the courier. Just ask him and he will be glad to help you.</p>
-                    </div>
-                    <div className='benefit benefit3'>
-                        <div className='benefit-header'>
-                            <img src={customerSVG} alt=""/>
-                            <h2>Permanent customer support.</h2>
-                        </div>
-                        <p>You can call us anytime, any day and we will try our best to help you! You can find the customer support telephone number in the "contact" page.</p>
-                    </div>
-                </div>
                 <div className="percent-customers">
                     {percentOfCustomers > 0 ? percentOfCustomers >= 70 ? <img src={likeSVG} alt=""/> : percentOfCustomers > 40 ? <img src={sosoSVG} alt=""/> : <img src={disLikeSVG} alt=""/> : null}
                     {percentOfCustomers > 0 ? <p><span className='highlighted'>{percentOfCustomers}%</span> of customers recommend this product!</p> : null }

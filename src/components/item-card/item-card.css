@@ -17,6 +17,7 @@
   transition: all 0.1s;
 }
 .item-container img {
+  object-fit: cover;
   width: 80%;
   height: 55%;
   min-width: 190px;

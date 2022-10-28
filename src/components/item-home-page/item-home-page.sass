@@ -1,0 +1,32 @@
+.item-home-page-container
+  display: grid
+  grid-template-areas: 'hero aside1' 'hero aside2'
+  grid-template-columns: 2fr 1fr
+  .hero
+    grid-area: hero
+    background: url('../../utils/imgs-landing-page/Product.jpg')
+    background-repeat: no-repeat
+    background-position: 50% 25%
+    background-size: cover
+    //width: 100vh
+    height: 50vh
+  .aside1
+    text-align: justify
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 1em
+    grid-area: aside1
+    img
+      width: 150px
+  .aside2
+    text-align: justify
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 1em
+    color: whitesmoke
+    grid-area: aside2
+    background-color: #1e1e23
+    img
+      width: 150px

@@ -24,10 +24,7 @@ const NavigationBarExtension = () => {
 
     const openCloseNavigation = () => navigationOpened ? setTimeout(() => dispatch(setNavigationOpened(false)), timeToClose) : dispatch(setNavigationOpened(true))
 
-    const openCloseProfile = () => {
-        openCloseNavigation()
-        profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
-    }
+
 
     return (
         <div>
@@ -38,8 +35,7 @@ const NavigationBarExtension = () => {
                                                                                                          alt=""/></span></Link></li>
                 <li onClick={openCloseNavigation}><Link className='link-helper' to='/about' >About<span className='navigation-icon'><img src={questionSVG}
                                                                                                            alt=""/></span></Link></li>
-                <li className='user-name' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
-                    src={userSVG} alt=""/></span></Link></li>
+
                 {user ? <li onClick={openCloseNavigation}><Link className='link-helper' to='/favourites' >Favourites<span className='navigation-icon'><img
                     src={heartSVG} alt=""/></span></Link></li> : null }
             </ul>

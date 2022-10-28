@@ -1,4 +1,4 @@
-.home-page-container {
+.home-page-container .landing {
   background: url("../../utils/imgs/cover.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -10,18 +10,45 @@
   text-align: center;
   color: whitesmoke;
 }
-.home-page-container .text {
+.home-page-container .landing .text {
   display: flex;
   flex-direction: column;
 }
-.home-page-container .text .title-container {
+.home-page-container .landing .text .title-container {
   padding: 1em;
   border: 10px solid whitesmoke;
   font-size: 3.5em;
   line-height: 10px;
 }
-.home-page-container .text .sign-in-button {
+.home-page-container .landing .text .sign-in-button {
   margin: 1em 0;
+}
+.home-page-container .landing .text .mouse-icon {
+  animation-name: up-down;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.home-page-container .home-page-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.home-page-container .home-page-wrapper .benefits {
+  margin: 1.3em 0;
+}
+.home-page-container .home-page-benefits .benefits {
+  list-style-type: none;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(60%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=home-page.css.map */

@@ -5,6 +5,21 @@
   align-items: center;
   height: 160px;
 }
+.navigation .right-icons {
+  position: absolute;
+  right: 2em;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.navigation .right-icons .user-icon {
+  width: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2em;
+}
 .navigation .logo-img {
   z-index: 100;
 }
@@ -27,8 +42,6 @@
 }
 .navigation .cart-icon {
   color: whitesmoke;
-  position: absolute;
-  right: 10px;
 }
 .navigation .cart-icon img {
   width: 50px;

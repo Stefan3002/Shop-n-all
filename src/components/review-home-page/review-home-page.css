@@ -1,0 +1,24 @@
+.review {
+  background: white;
+  width: fit-content;
+  border-radius: 10px;
+  position: relative;
+}
+.review img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  height: 250px;
+}
+.review .review-content {
+  padding: 1em;
+  max-width: 350px;
+}
+.review .color-bar {
+  height: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/*# sourceMappingURL=review-home-page.css.map */
