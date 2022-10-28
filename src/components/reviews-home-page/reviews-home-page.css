@@ -16,4 +16,13 @@
   right: 5em;
 }
 
+@media screen and (max-width: 500px) {
+  .reviews-home-page-container .left-caret {
+    left: 2px;
+  }
+  .reviews-home-page-container .right-caret {
+    right: 2px;
+  }
+}
+
 /*# sourceMappingURL=reviews-home-page.css.map */

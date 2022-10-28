@@ -39,6 +39,11 @@
   list-style-type: none;
 }
 
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 12px;
+  }
+}
 @keyframes up-down {
   0% {
     transform: translateY(0);
