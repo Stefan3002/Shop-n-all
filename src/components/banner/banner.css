@@ -1,0 +1,18 @@
+.banner-container {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-container p {
+  padding: 0.4em;
+  border: 10px solid whitesmoke;
+  font-weight: bold;
+  font-size: 3em;
+  color: whitesmoke;
+}
+
+/*# sourceMappingURL=banner.css.map */

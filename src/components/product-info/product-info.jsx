@@ -165,20 +165,23 @@ const ProductInfo = ({itemsArray}) => {
                     {percentOfCustomers > 0 ? percentOfCustomers >= 70 ? <img src={likeSVG} alt=""/> : percentOfCustomers > 40 ? <img src={sosoSVG} alt=""/> : <img src={disLikeSVG} alt=""/> : null}
                     {percentOfCustomers > 0 ? <p><span className='highlighted'>{percentOfCustomers}%</span> of customers recommend this product!</p> : null }
                 </div>
-                {
-                    itemReviews ? <div className='reviews-container'>
-                        {
-                            itemReviews.map((itemReview) => {
-                                return <ItemReview key={itemReview.reviewTitle} data={itemReview} />
-                            })
-                        }
-                    </div> : null
-                }
+                <div className="reviews-container">
+                    {
+                        itemReviews ? <div className='user-reviews-container'>
+                            {
+                                itemReviews.map((itemReview) => {
+                                    return <ItemReview key={itemReview.reviewTitle} data={itemReview} />
+                                })
+                            }
+                        </div> : null
+                    }
 
 
-                <div className="reviews">
-                    {user ? <LeaveReview productId={productId} categoryTitle={categoryTitle} /> : <div className='no-user-reviews'><p>To add a review, please log in.</p><img src={noUserImage} alt=""/></div>}
+                    <div className="add-review">
+                        {user ? <LeaveReview productId={productId} categoryTitle={categoryTitle} /> : <div className='no-user-reviews'><p>To add a review, please log in.</p><img src={noUserImage} alt=""/></div>}
+                    </div>
                 </div>
+
                 <div className="other-products-container">
                     <h2 className='title'>Other similar products.</h2>
                     <div className="products">

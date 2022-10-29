@@ -26,7 +26,7 @@ const Parallax:React.FC<parallaxProps> = ({data}) => {
                         return <div className='parallax' style={{backgroundImage: `url(${img})`, backgroundPosition: position}} >
                             <div className="content-container">
                                 <p>{text}</p>
-                                <img data-name={text} onClick={expandSection} src={plusSVG} alt=""/>
+                                {/*<img data-name={text} onClick={expandSection} src={plusSVG} alt=""/>*/}
                             </div>
                         </div>
                     })

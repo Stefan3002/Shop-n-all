@@ -2,9 +2,22 @@
   width: 70%;
   margin: 3em auto;
 }
+.product-info-container .reviews-container {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+.product-info-container .add-review {
+  margin: 1em;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 .product-info-container .percent-customers {
   border-radius: 10px;
   color: whitesmoke;
+  padding: 1em;
   background: url(../../utils/imgs/abstractArt.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -66,9 +79,6 @@
 }
 .basic-info-container-bg .basic-info-container .aside-left .aside .price {
   font-size: 1.5em;
-}
-.basic-info-container-bg .reviews {
-  margin: 1em;
 }
 .basic-info-container-bg .heart {
   margin: 0 1em;
