@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
 import {addOrderToDB, getAddresses} from "../../utils/firebase/firebase";
 import AddressInput from "../AddressInput/address-input";
+import PaymentForm from "../payment-form/payment-form";
 const CheckoutPage = () => {
     const {items} = useContext(CheckoutContext)
     const user = useSelector(getUser)
@@ -45,6 +46,9 @@ const CheckoutPage = () => {
                 }
                 <br/>
                 <Button clickHandler={createOrder} color='#dca536' text='Pay.' />
+            </div>
+            <div className="card-payment">
+                <PaymentForm />
             </div>
             <div className="addresses-selector">
                 <h2>Delivery address:</h2>

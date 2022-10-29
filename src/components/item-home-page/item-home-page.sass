@@ -3,13 +3,25 @@
   grid-template-areas: 'hero aside1' 'hero aside2'
   grid-template-columns: 2fr 1fr
   .hero
+    color: whitesmoke
     grid-area: hero
-    background: url('../../utils/imgs-landing-page/Product.jpg')
+    background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.6)), url('../../utils/imgs-landing-page/Product.jpg')
     background-repeat: no-repeat
     background-position: 50% 25%
     background-size: cover
-    //width: 100vh
     height: 50vh
+    padding: 1em
+    display: flex
+    flex-direction: column
+    justify-content: center
+    h2
+      font-size: 3em
+      margin: 0
+      color: #1e1e23
+      line-height: 45px
+    p
+      font-size: 1.5em
+      margin: 0
   .aside1
     text-align: justify
     display: flex
@@ -18,7 +30,8 @@
     padding: 1em
     grid-area: aside1
     img
-      width: 150px
+      width: 100%
+      max-width: 300px
   .aside2
     text-align: justify
     display: flex
@@ -29,7 +42,8 @@
     grid-area: aside2
     background-color: #1e1e23
     img
-      width: 150px
+      width: 100%
+      max-width: 500px
 
 @media screen and (max-width: 500px)
   .item-home-page-container

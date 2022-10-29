@@ -4,12 +4,27 @@
   grid-template-columns: 2fr 1fr;
 }
 .item-home-page-container .hero {
+  color: whitesmoke;
   grid-area: hero;
-  background: url("../../utils/imgs-landing-page/Product.jpg");
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url("../../utils/imgs-landing-page/Product.jpg");
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: cover;
   height: 50vh;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item-home-page-container .hero h2 {
+  font-size: 3em;
+  margin: 0;
+  color: #1e1e23;
+  line-height: 45px;
+}
+.item-home-page-container .hero p {
+  font-size: 1.5em;
+  margin: 0;
 }
 .item-home-page-container .aside1 {
   text-align: justify;
@@ -20,7 +35,8 @@
   grid-area: aside1;
 }
 .item-home-page-container .aside1 img {
-  width: 150px;
+  width: 100%;
+  max-width: 300px;
 }
 .item-home-page-container .aside2 {
   text-align: justify;
@@ -33,7 +49,8 @@
   background-color: #1e1e23;
 }
 .item-home-page-container .aside2 img {
-  width: 150px;
+  width: 100%;
+  max-width: 500px;
 }
 
 @media screen and (max-width: 500px) {

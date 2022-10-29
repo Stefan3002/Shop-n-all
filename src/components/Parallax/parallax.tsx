@@ -2,6 +2,7 @@ import './parallax.css'
 import * as React from "react";
 // @ts-ignore
 import plusSVG from '../../utils/imgs-landing-page/plusSVG.svg'
+import {Link} from "react-router-dom";
 
 interface parallaxProps {
     data: {
@@ -23,12 +24,14 @@ const Parallax:React.FC<parallaxProps> = ({data}) => {
                 {
                     data.map((d) => {
                         const {img, text, position} = d
-                        return <div className='parallax' style={{backgroundImage: `url(${img})`, backgroundPosition: position}} >
-                            <div className="content-container">
-                                <p>{text}</p>
-                                {/*<img data-name={text} onClick={expandSection} src={plusSVG} alt=""/>*/}
+                        return <Link to={`/shop/${text}`}>
+                            <div className='parallax' style={{backgroundImage: `url(${img})`, backgroundPosition: position}} >
+                                <div className="content-container">
+                                    <p>{text}</p>
+                                    {/*<img data-name={text} onClick={expandSection} src={plusSVG} alt=""/>*/}
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     })
                 }
             </>

@@ -11,6 +11,8 @@ import {ItemsContextProvider} from "./context/items/items";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
 import * as serviceWorker from './serviceWorkerRegistration'
+import {Elements} from '@stripe/react-stripe-js'
+import {stripePromise} from './utils/stripe/stripe'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,7 +23,9 @@ root.render(
                   <FavouritesContextProvider>
                       <ItemsContextProvider>
                           <CheckoutContextProvider>
-                              <App />
+                              <Elements stripe={stripePromise}>
+                                  <App />
+                              </Elements>
                           </CheckoutContextProvider>
                       </ItemsContextProvider>
                   </FavouritesContextProvider>

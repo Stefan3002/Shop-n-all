@@ -4,6 +4,11 @@ import {getUser} from "../../store/profile/profile-selectors";
 const ItemReview = ({data, imageUrl, itemName}) => {
     const {displayName, reviewBody, reviewTitle, stars} = data
     const user = useSelector(getUser)
+
+    const removeReviewFromDB = () => {
+
+    }
+
     return (
         <div className='item-review-container'>
             <div className="review-header">
@@ -16,6 +21,7 @@ const ItemReview = ({data, imageUrl, itemName}) => {
                     {stars >= 4 ? <i className="fa-solid fa-star"></i> : null}
                     {stars >= 5 ? <i className="fa-solid fa-star"></i> : null}
                 </div>
+                {/*<i onClick={removeReviewFromDB} className="fa fa-2x fa-solid fa-trash-can"></i>*/}
             </div>
 
             {/*<p className='date'>{addedAt.toString()}</p>*/}

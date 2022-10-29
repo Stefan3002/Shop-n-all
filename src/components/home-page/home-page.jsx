@@ -52,12 +52,12 @@ const HomePage = () => {
         },
         {
             img: parallaxImg4,
-            text: 'Women',
+            text: 'Womens',
             position: 'top'
         },
         {
             img: parallaxImg5,
-            text: 'Men',
+            text: 'Mens',
             position: 'top'
         }
 
@@ -79,9 +79,9 @@ const HomePage = () => {
                     <Benefits />
                 </div>
                 <ItemHomePage />
-                <div className="home-page-wrapper">
-                    <ReviewsHomePage />
-                </div>
+                {/*<div className="home-page-wrapper">*/}
+                {/*    <ReviewsHomePage />*/}
+                {/*</div>*/}
                 <Parallax data={parallaxImgs} />
 
                 {/*{Photo by <a href="https://unsplash.com/ja/@wesleyphotography?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wesley Tingey</a> on <a href="https://unsplash.com/s/photos/fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/}

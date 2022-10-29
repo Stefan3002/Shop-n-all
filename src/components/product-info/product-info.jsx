@@ -15,13 +15,9 @@ import {FavouritesContext} from "../../context/favourites/favourites";
 import {updateDocument} from "../../utils/firebase/firebase";
 import {getUser} from "../../store/profile/profile-selectors";
 import missingImg from '../../utils/imgs/question.svg'
-import moneySVG from '../../utils/imgs/money-svgrepo-com.svg'
-import packageSVG from '../../utils/imgs/package-svgrepo-com.svg'
-import customerSVG from '../../utils/imgs/customer-service-help-svgrepo-com.svg'
 import likeSVG from '../../utils/imgs/LikeSVG.svg'
 import disLikeSVG from '../../utils/imgs/dislike.svg'
 import sosoSVG from '../../utils/imgs/sosoSVG.svg'
-import questionSVG from '../../utils/imgs/QuestionSVG.svg'
 import ItemCard from "../item-card/item-card";
 import {computeMedianCustomersThatRecommendProduct} from "../../utils/methods/item";
 import Benefits from "../benefits/benefits";
