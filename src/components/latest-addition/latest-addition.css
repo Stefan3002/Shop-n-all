@@ -1,6 +1,13 @@
 .latest-addition-container {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
   flex-wrap: wrap;
+}
+
+.latest-addition-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=latest-addition.css.map */

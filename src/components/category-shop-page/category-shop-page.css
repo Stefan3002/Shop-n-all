@@ -12,6 +12,7 @@
 
 .sort-options-container {
   display: flex;
+  flex-direction: row;
 }
 
 select, input {

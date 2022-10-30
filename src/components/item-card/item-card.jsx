@@ -4,7 +4,7 @@ import {useContext, useEffect} from "react";
 import {CheckoutContext} from "../../context/checkout/checkout";
 import {PopupContext} from "../../context/popup/popup";
 import {FavouritesContext} from "../../context/favourites/favourites";
-import {retrieveFavourites, updateDocument} from "../../utils/firebase/firebase";
+import {addFavouriteToDB, retrieveFavourites, updateDocument} from "../../utils/firebase/firebase";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
@@ -62,7 +62,7 @@ const ItemCard = ({item, animationDelay}) => {
         try {
             const newFavourites = [...favourites, item]
             setFavourites(newFavourites)
-            await updateDocument('favourites', newFavourites, user)
+            await addFavouriteToDB(item, user)
             setPoppedUp(true)
             setPopUpText('Item added to favourites.')
             setPopUpType('success')
@@ -70,8 +70,9 @@ const ItemCard = ({item, animationDelay}) => {
                 setPoppedUp(false)
             }, 2500)
         }catch(err){
+            console.log(err)
             setPoppedUp(true)
-            setPopUpText('An error occurred. Are you sure you are logged in?')
+            setPopUpText(err.message)
             setPopUpType('error')
             setTimeout(() => {
                 setPoppedUp(false)
@@ -110,10 +111,11 @@ const ItemCard = ({item, animationDelay}) => {
                 </div>
                 <div className="main">
                     <Link to={`/shop/${item.category}/${id.toString()}`}>
-                        <h2 className='item-name'>{name.slice(0,8)} {name.length > 8 ? '...' : null}</h2>
                         <img src={imageUrl} alt=""/>
+                        {console.log(imageUrl)}
                     </Link>
                     {/*<i className="fa fa-xl fa-solid fa-cart-plus"></i>*/}
+                    <h2 className='item-name'>{name.slice(0,10)} {name.length > 8 ? '...' : null}</h2>
                     <div className="bottom">
                         <Button dividers={true} text='Add to cart.' color='#dca536' clickHandler={addToCart}/>
                         {user && alreadyInFavourites() ? <i onClick={removeItemFromFavourites} className="fa fa-xl fa-solid fa-heart"></i> : <i onClick={addToFavourites} className="fa fa-xl fa-regular fa-heart"></i>}

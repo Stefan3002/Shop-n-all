@@ -17,10 +17,7 @@ const LatestAddition = ({categoryTitle, items}) => {
             if(windowWidth > 1500)
                 numberOfAdditions.current = 15
             else
-            if(windowWidth > 1000)
                 numberOfAdditions.current = 5
-            else
-                numberOfAdditions.current = 2
 
     }, [windowWidth])
     return (

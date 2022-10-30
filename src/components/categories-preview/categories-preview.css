@@ -28,4 +28,12 @@
   padding: 1em;
 }
 
+@media screen and (max-width: 1000px) {
+  .shop-container .shop-container-row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /*# sourceMappingURL=categories-preview.css.map */

@@ -57,10 +57,39 @@ export const updateDocument = async (fieldName, value, currentUser) => {
     })
 }
 
-export const retrieveFavourites = async (user) => {
-    const userRef = await doc(db, 'users', user.uid)
+export const addFavouriteToDB = async (item, user) => {
+    const {id, category} = item
+    const {uid} = user
+    const userRef = doc(db, 'users', uid)
     const userSnap = await getDoc(userRef)
-    return userSnap.data().favourites
+    const {favourites} = userSnap.data()
+    favourites.push({
+        category,
+        id
+    })
+
+
+    await updateDoc(userRef, {
+        ...userSnap.data(),
+        favourites
+    })
+}
+
+export const retrieveFavourites = async (user) => {
+    const userRef = doc(db, 'users', user.uid)
+    const userSnap = await getDoc(userRef)
+
+    const favourites = []
+
+    for (const item of userSnap.data().favourites) {
+        const itemsRef = doc(db, 'categories', item.category.toLowerCase())
+        const itemsSnap = await getDoc(itemsRef)
+        itemsSnap.data().items.forEach((itemSnap) => {
+            if(itemSnap.id === item.id)
+                favourites.push(itemSnap)
+        })
+    }
+    return favourites
 }
 
 export const retrieveUserData = async (uid) => {

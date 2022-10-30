@@ -1,3 +1,11 @@
 .latest-addition-container
-  display: flex
+  display: flex !important
+  flex-direction: row !important
   flex-wrap: wrap
+
+
+@media screen and (max-width: 1000px)
+.latest-addition-container
+    flex-direction: column
+    justify-content: center
+    align-items: center

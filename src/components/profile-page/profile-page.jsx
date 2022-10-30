@@ -2,7 +2,7 @@ import './profile-page.css'
 import greetingsImg from '../../utils/imgs/hello.svg'
 import {useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
-import {getUserOrders, retrieveUserData, signOutHandler} from "../../utils/firebase/firebase";
+import {getUserOrders, retrieveFavourites, retrieveUserData, signOutHandler} from "../../utils/firebase/firebase";
 import ProfileInfoContainer from "../profile-info-container/profile-info-container";
 import {useState} from "react";
 
@@ -31,9 +31,9 @@ const ProfilePage = () => {
     }
     const favouritesInfo = () => {
         (async () => {
-            const userData = await retrieveUserData(uid)
+            const favourites = await retrieveFavourites(user)
             setTypeOfInfo('favourites')
-            setContentInfo(userData.favourites)
+            setContentInfo(favourites)
         })()
     }
     const addressesInfo = () => {

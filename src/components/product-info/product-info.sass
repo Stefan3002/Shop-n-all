@@ -31,20 +31,14 @@
   .other-products-container
     .products
       display: flex
+      flex-direction: row
+      flex-wrap: wrap
       justify-content: center
       gap: .7em
     .title
       font-size: 2em
   width: 70%
   margin: 3em auto
-
-
-@media screen and (max-width: 1000px)
-  .benefits
-    flex-direction: column
-
-
-
 
 .basic-info-container-bg
   border-radius: 10px
@@ -59,9 +53,10 @@
     //padding: 1em
     display: flex
     img
+      object-fit: cover
       border-radius: 10px
       width: 100%
-      height: auto
+      height: 100%
     .aside-left
       display: flex
       .aside
@@ -85,6 +80,7 @@
     margin: 0 auto
     margin-left: 1em
     .missing-img
+      object-fit: scale-down
       width: 100%
       max-width: 600px
 
@@ -93,15 +89,19 @@
   .product-info-container
     .basic-info-container
       flex-direction: column
+  .aside-left
+    flex-direction: column
+    color: whitesmoke
+  .aside-content
+    color: whitesmoke
   .product-info-container
-    .other-products-container
-      .products
-        grid-template-columns: 1fr
+    width: 85%
+    .reviews-container
+      flex-direction: column
 
-@media screen and (max-width: 1500px)
-  .product-info-container
-    .other-products-container
-      .products
-        display: grid
-        grid-template-columns: 1fr 1fr
-        gap: 0
+@media screen and (max-width: 1000px)
+  .benefits
+    flex-direction: column
+
+
+

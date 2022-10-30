@@ -47,9 +47,9 @@ const CheckoutPage = () => {
                 <br/>
                 <Button clickHandler={createOrder} color='#dca536' text='Pay.' />
             </div>
-            <div className="card-payment">
-                <PaymentForm />
-            </div>
+            {/*<div className="card-payment">*/}
+            {/*    <PaymentForm />*/}
+            {/*</div>*/}
             <div className="addresses-selector">
                 <h2>Delivery address:</h2>
                 <div className="address-container">
