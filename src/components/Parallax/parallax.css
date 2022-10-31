@@ -1,4 +1,6 @@
 .parallax {
+  filter: grayscale(1);
+  transition: 0.2s;
   background-attachment: fixed;
   height: 40vh;
   background-size: cover;
@@ -9,7 +11,11 @@
   align-items: center;
   font-weight: bold;
   font-size: 4em;
-  border: 10px solid whitesmoke;
+  overflow: hidden;
+}
+.parallax:hover {
+  filter: grayscale(0);
+  transition: all 0.2s;
 }
 .parallax .content-container {
   border: 5px solid whitesmoke;

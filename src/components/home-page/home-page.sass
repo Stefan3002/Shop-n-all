@@ -1,29 +1,32 @@
 .home-page-container
   .landing
-    background: url("../../utils/imgs/cover.jpg")
-    background-size: cover
-    background-repeat: no-repeat
-    height: 100vh
-    background-position: 50% 40%
-    display: flex
-    justify-content: center
-    align-items: center
+    display: grid
+    grid-template-columns: 1fr 2fr
     text-align: center
     color: whitesmoke
+    .hero
+      background: url("../../utils/imgs/cover.jpg")
+      background-size: cover
+      background-repeat: no-repeat
+      height: 100vh
+      background-position: 50% 40%
     .text
+      line-height: 0
+      color: black
       display: flex
+      justify-content: center
       flex-direction: column
       .title-container
-        padding: 1em
-        border: 10px solid whitesmoke
         font-size: 3.5em
-        line-height: 10px
       .sign-in-button
         margin: 1em 0
       .mouse-icon
+        margin-top: .2em
         animation-name: up-down
         animation-duration: 1s
         animation-iteration-count: infinite
+      .button-landing-page
+        margin-top: 4em
   .home-page-wrapper
     width: 80%
     margin: 0 auto
@@ -36,6 +39,11 @@
 @media screen and (max-width: 500px)
   html
     font-size: 12px
+
+//@media screen and (max-width: 1000px)
+//.home-page-container
+//  .landing
+//    grid-template-columns: 1fr
 
 
 @keyframes up-down

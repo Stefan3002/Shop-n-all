@@ -1,42 +1,43 @@
 .navigation
+  //position: fixed
+  width: 100vw
   background: #1e1e23
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 160px
-  .right-icons
-    position: absolute
-    right: 2em
+  height: 120px
+  .navigation-wrapper
+    width: 85%
+    margin: 0 auto
     display: flex
+    justify-content: space-between
     align-items: center
-    color: white
-    .user-icon
-      width: 50px
-      text-align: center
+    .right-icons
       display: flex
       align-items: center
-      justify-content: center
-      margin-left: 2em
-  .logo-img
-    z-index: 100
-    img
-      height: 135%
-  .menu-icon
-    color: white
-    z-index: 100
-    cursor: pointer
-    position: absolute
-    left: 10px
-  .logo
-    width: 100px
-  .logo-text
-    font-weight: bold
-    line-height: 0
-  .cart-icon
-    color: whitesmoke
-    img
-      width: 50px
+      color: white
+      .user-icon
+        //width: 40px
+        text-align: center
+        margin-left: 1em
+        img
+          width: 40%
 
+    .logo-img
+      z-index: 100
+      img
+        height: 135%
+    .menu-icon
+      color: white
+      z-index: 100
+      cursor: pointer
+    .logo-img
+      img
+        width: 130px
+    .logo-text
+      font-weight: bold
+      line-height: 0
+    .cart-icon
+      color: whitesmoke
+      img
+        width: 40px
 
 .custom-shape-divider-top-1663860861
   position: absolute
@@ -46,8 +47,6 @@
   overflow: hidden
   line-height: 0
 
-
-
 .custom-shape-divider-top-1663860861 svg
   position: relative
   display: block
@@ -55,12 +54,8 @@
   height: 150px
   transform: rotateY(180deg)
 
-
-
 .custom-shape-divider-top-1663860861 .shape-fill
   fill: rgb(35, 35, 42)
-
-
 
 @media screen and (max-width: 500px)
   .navigation

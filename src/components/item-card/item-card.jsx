@@ -143,7 +143,6 @@ const ItemCard = ({item, animationDelay}) => {
                         </svg>
                     </div>
                 </div>
-
             </div> : null}
         </>
 

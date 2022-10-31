@@ -1,50 +1,50 @@
 .navigation {
+  width: 100vw;
   background: #1e1e23;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 160px;
+  height: 120px;
 }
-.navigation .right-icons {
-  position: absolute;
-  right: 2em;
+.navigation .navigation-wrapper {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation .navigation-wrapper .right-icons {
   display: flex;
   align-items: center;
   color: white;
 }
-.navigation .right-icons .user-icon {
-  width: 50px;
+.navigation .navigation-wrapper .right-icons .user-icon {
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 2em;
+  margin-left: 1em;
 }
-.navigation .logo-img {
+.navigation .navigation-wrapper .right-icons .user-icon img {
+  width: 40%;
+}
+.navigation .navigation-wrapper .logo-img {
   z-index: 100;
 }
-.navigation .logo-img img {
+.navigation .navigation-wrapper .logo-img img {
   height: 135%;
 }
-.navigation .menu-icon {
+.navigation .navigation-wrapper .menu-icon {
   color: white;
   z-index: 100;
   cursor: pointer;
-  position: absolute;
-  left: 10px;
 }
-.navigation .logo {
-  width: 100px;
+.navigation .navigation-wrapper .logo-img img {
+  width: 130px;
 }
-.navigation .logo-text {
+.navigation .navigation-wrapper .logo-text {
   font-weight: bold;
   line-height: 0;
 }
-.navigation .cart-icon {
+.navigation .navigation-wrapper .cart-icon {
   color: whitesmoke;
 }
-.navigation .cart-icon img {
-  width: 50px;
+.navigation .navigation-wrapper .cart-icon img {
+  width: 40px;
 }
 
 .custom-shape-divider-top-1663860861 {

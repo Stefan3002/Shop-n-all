@@ -69,16 +69,17 @@ const HomePage = () => {
                 <div className="landing">
                     <div className="text">
                         <h1 className='title-container'>Shop-n-all</h1>
-                        <i className='sign-in-button'><Button text='Sign in with Google.' color='whitesmoke' clickHandler={createAccountGoogleFace}/></i>
-                        <Link className='button-home-page' to='/shop'><Button text='Shop now.' color='whitesmoke' fontSize='1.5em'/></Link>
+                        <p>Your fashion expert!</p>
+                        <Link className='button-landing-page' to='/shop'><Button text='Shop now.' color='black' fontSize='1.5em'/></Link>
                         <i className="mouse-icon fa-3x fa fa-solid fa-computer-mouse"></i>
                     </div>
+                    <div className="hero" />
                 </div>
 
-                <div className="home-page-wrapper">
-                    <Benefits />
-                </div>
-                <ItemHomePage />
+                {/*<div className="home-page-wrapper">*/}
+                {/*    <Benefits />*/}
+                {/*</div>*/}
+                {/*<ItemHomePage />*/}
                 {/*<div className="home-page-wrapper">*/}
                 {/*    <ReviewsHomePage />*/}
                 {/*</div>*/}

@@ -40,25 +40,26 @@ const NavigationBar = () => {
     return (
         <div className='body-container'>
 
-            <div className="custom-shape-divider-top-1663860861">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                     preserveAspectRatio="none">
-                    <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>
-                </svg>
-            </div>
-
-
             {
                 profileState ? <ProfileDropdown /> : null
             }
 
             <div className='navigation'>
-                {navigationOpened ? <div><Blur /><NavigationBarExtension /></div> : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-bars"></i></div>}
-                <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
-                <div className="right-icons">
-                    <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
-                    <div className='user-icon' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
-                        src={userSVG} alt=""/></span></Link></div>
+                {/*<div className="custom-shape-divider-top-1663860861">*/}
+                {/*    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"*/}
+                {/*         preserveAspectRatio="none">*/}
+                {/*        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>*/}
+                {/*    </svg>*/}
+                {/*</div>*/}
+                <div className="navigation-wrapper">
+
+                    {navigationOpened ? <div><Blur /><NavigationBarExtension /></div> : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-bars"></i></div>}
+                    <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
+                    <div className="right-icons">
+                        <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
+                        <div className='user-icon' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
+                            src={userSVG} alt=""/></span></Link></div>
+                    </div>
                 </div>
             </div>
             {cartOpened ? <CartDropdown /> : null}

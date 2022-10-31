@@ -1,32 +1,37 @@
 .home-page-container .landing {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  text-align: center;
+  color: whitesmoke;
+}
+.home-page-container .landing .hero {
   background: url("../../utils/imgs/cover.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   background-position: 50% 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: whitesmoke;
 }
 .home-page-container .landing .text {
+  line-height: 0;
+  color: black;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 .home-page-container .landing .text .title-container {
-  padding: 1em;
-  border: 10px solid whitesmoke;
   font-size: 3.5em;
-  line-height: 10px;
 }
 .home-page-container .landing .text .sign-in-button {
   margin: 1em 0;
 }
 .home-page-container .landing .text .mouse-icon {
+  margin-top: 0.2em;
   animation-name: up-down;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+.home-page-container .landing .text .button-landing-page {
+  margin-top: 4em;
 }
 .home-page-container .home-page-wrapper {
   width: 80%;
