@@ -1,5 +1,5 @@
 import {Link, Outlet} from "react-router-dom";
-import {Fragment, useContext} from "react";
+import {Fragment, useContext, useEffect, useState} from "react";
 import './navigation-bar.css'
 import {PopupContext} from "../../context/popup/popup";
 import PopUp from "../pop-up/pop-up";
@@ -18,6 +18,14 @@ import userSVG from "../../utils/imgs/UserSVG.svg";
 import {setProfileOpened} from "../../store/profile/profile-actions";
 
 const NavigationBar = () => {
+    const [userProfilePic, setUserProfilePic] = useState(userSVG)
+    const user = useSelector(getUser)
+
+    useEffect(() => {
+        if(user) {
+            setUserProfilePic(user.photoURL)
+        }
+    }, [user])
 
     const dispatch = useDispatch()
     const profileState = useSelector(getProfileOpened)
@@ -34,8 +42,6 @@ const NavigationBar = () => {
         openCloseNavigation()
         profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
     }
-
-    const user = useSelector(getUser)
 
     return (
         <div className='body-container'>
@@ -57,8 +63,8 @@ const NavigationBar = () => {
                     <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
                     <div className="right-icons">
                         <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
-                        <div className='user-icon' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} >{user ? user.displayName : 'Authenticate'}<span className='navigation-icon'><img
-                            src={userSVG} alt=""/></span></Link></div>
+                        <div className='user-icon' onClick={user ? openCloseProfile : null}><Link className='link-helper' to={user ? '' : '/auth'} ><span className='navigation-icon'><img
+                            src={user ? userProfilePic : userSVG} alt=""/></span></Link></div>
                     </div>
                 </div>
             </div>

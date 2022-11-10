@@ -1,10 +1,11 @@
 .navigation {
+  position: absolute;
   width: 100vw;
-  background: #1e1e23;
+  background: transparent;
   height: 120px;
 }
 .navigation .navigation-wrapper {
-  width: 85%;
+  width: 75%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -16,11 +17,11 @@
   color: white;
 }
 .navigation .navigation-wrapper .right-icons .user-icon {
-  text-align: center;
   margin-left: 1em;
 }
 .navigation .navigation-wrapper .right-icons .user-icon img {
-  width: 40%;
+  border-radius: 50%;
+  width: 60px;
 }
 .navigation .navigation-wrapper .logo-img {
   z-index: 100;
@@ -32,6 +33,7 @@
   color: white;
   z-index: 100;
   cursor: pointer;
+  font-weight: normal;
 }
 .navigation .navigation-wrapper .logo-img img {
   width: 130px;

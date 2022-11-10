@@ -69,9 +69,14 @@ const HomePage = () => {
                 <div className="landing">
                     <div className="text">
                         <h1 className='title-container'>Shop-n-all</h1>
-                        <p>Your fashion expert!</p>
-                        <Link className='button-landing-page' to='/shop'><Button text='Shop now.' color='black' fontSize='1.5em'/></Link>
-                        <i className="mouse-icon fa-3x fa fa-solid fa-computer-mouse"></i>
+                        <h2 className='sub-title-container'>Your fashion expert!</h2>
+                        <div className="title-details">
+                            <p>All the new additions can be found here, on Shop-n-All. <br/> Start buying today!</p>
+                        </div>
+                        <div className="call-to-action-container">
+                            <Link className='button-landing-page' to='/shop'><Button text='Shop now.' color='whitesmoke' fontSize='1.5em'/></Link>
+                            <i className="mouse-icon fa-3x fa fa-solid fa-computer-mouse"></i>
+                        </div>
                     </div>
                     <div className="hero" />
                 </div>

@@ -13,9 +13,16 @@
   font-size: 4em;
   overflow: hidden;
 }
+.parallax .content-container p {
+  transition: all 0.3s;
+}
 .parallax:hover {
   filter: grayscale(0);
   transition: all 0.2s;
+}
+.parallax:hover > .content-container p {
+  transition: all 0.3s;
+  transform: scale(1.3);
 }
 .parallax .content-container {
   border: 5px solid whitesmoke;
