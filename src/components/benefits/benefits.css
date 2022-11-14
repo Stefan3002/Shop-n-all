@@ -2,6 +2,7 @@
   display: flex;
 }
 .benefits .benefit {
+  max-width: 400px;
   border-radius: 10px;
   margin-left: 0.5em;
   margin-top: 0.7em;
@@ -21,7 +22,7 @@
   background: linear-gradient(to right, whitesmoke, orange);
 }
 .benefits .benefit2 {
-  background: linear-gradient(to left, whitesmoke, #6ec4da);
+  background: #6ec4da;
 }
 .benefits .benefit3 {
   background: linear-gradient(to left, whitesmoke, lightgreen);

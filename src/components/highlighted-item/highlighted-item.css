@@ -1,0 +1,16 @@
+.highlighted-item-container {
+  margin: 0 0.5em;
+}
+.highlighted-item-container img {
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+}
+.highlighted-item-container .text {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 10px;
+}
+
+/*# sourceMappingURL=highlighted-item.css.map */

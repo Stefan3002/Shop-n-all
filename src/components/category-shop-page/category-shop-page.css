@@ -15,6 +15,12 @@
   flex-direction: row;
 }
 
+.highlighted-items {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
 select, input {
   margin: 0 1em;
   background: transparent;

@@ -9,6 +9,7 @@ import bannerImg2 from '../../utils/imgs-landing-page/parallaxImg2.jpg'
 import bannerImg3 from '../../utils/imgs-landing-page/parallaxImg3.jpg'
 import bannerImg4 from '../../utils/imgs-landing-page/parallaxImg4.jpg'
 import bannerImg5 from '../../utils/imgs-landing-page/parallaxImg5.jpg'
+import HighlightedItem from "../highlighted-item/highlighted-item.tsx";
 
 const CategoryShopPage = ({itemsArray, categoryTitle}) => {
     const [bannerImg, setBannerImg] = useState({})
@@ -82,6 +83,15 @@ const CategoryShopPage = ({itemsArray, categoryTitle}) => {
                     <p>Search:</p>
                     <input onChange={searchBarHandler} type="text" placeholder='Name of item.' name='search-bar'/>
                 </div>
+                {
+
+                    itemsArray? <div className="highlighted-items">
+                        <HighlightedItem name={itemsArray[itemsArray.length - 1].name} id={itemsArray[itemsArray.length - 1].id} imageUrl={itemsArray[itemsArray.length - 1].imageUrl} price={itemsArray[itemsArray.length - 1].price} />
+                        <HighlightedItem name={itemsArray[itemsArray.length - 2].name} id={itemsArray[itemsArray.length - 2].id} imageUrl={itemsArray[itemsArray.length - 2].imageUrl} price={itemsArray[itemsArray.length - 2].price} />
+                        <HighlightedItem name={itemsArray[itemsArray.length - 3].name} id={itemsArray[itemsArray.length - 3].id} imageUrl={itemsArray[itemsArray.length - 3].imageUrl} price={itemsArray[itemsArray.length - 3].price} />
+                    </div> : null
+                }
+
                 <div className='category-items-container'>
                     {filteredItems ? filteredItems.map((item, idx) => {
                         return <ItemCard key={item.id} item={item} animationDelay={idx} />
