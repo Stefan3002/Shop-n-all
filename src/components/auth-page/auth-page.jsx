@@ -28,8 +28,9 @@ const AuthPage = () => {
         <div className='auth-page-container'>
             <div className='auth-container'>
                 {/*<i className="fa-brands fa-google"></i>*/}
-                <Button text='Sign in with Google.' color='orange' clickHandler={createAccountGoogleFace}/>
-                <img src={authImg} alt=""/>
+                <h1>Sign in!</h1>
+                <span className="login-option"><i className="fa fa-2x fa-brands fa-google"></i> <Button text='Sign in with Google.' color='black' clickHandler={createAccountGoogleFace}/></span>
+                {/*<img src={authImg} alt=""/>*/}
             </div>
         </div>
     )
