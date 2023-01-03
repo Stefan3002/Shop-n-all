@@ -1,6 +1,7 @@
 .shop-container {
   width: 80%;
   margin: 1em auto;
+  padding-top: 10em;
   text-align: center;
   display: flex;
   flex-direction: column;

@@ -23,7 +23,7 @@ const CategoryShopPage = ({itemsArray, categoryTitle}) => {
     }
 
     useEffect(() => {
-        console.log(categoryTitle)
+        // console.log(categoryTitle)
         switch (categoryTitle) {
             case 'Hats':
                 setBannerImg({img: bannerImg3, pos: 'center'})
