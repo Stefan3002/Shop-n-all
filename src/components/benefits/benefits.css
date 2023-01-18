@@ -1,5 +1,6 @@
 .benefits {
   display: flex;
+  justify-content: center;
 }
 .benefits .benefit {
   max-width: 400px;
