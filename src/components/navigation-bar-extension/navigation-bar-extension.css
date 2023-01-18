@@ -1,24 +1,58 @@
-.navigation-container {
-  color: whitesmoke;
+.navigation-extended {
+  background: linear-gradient(to bottom, #18181d, #151518);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  min-width: 100vw;
   z-index: 101;
-  width: 0;
   display: flex;
   flex-direction: column;
+}
+.navigation-extended .bottom-section {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  justify-content: space-between;
+}
+.navigation-extended .bottom-section .user-icon {
+  margin: 0 1em;
+}
+.navigation-extended .bottom-section .user-icon img {
+  width: 100px;
+  border-radius: 50%;
+}
+.navigation-extended .top-section {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.5em;
+  color: whitesmoke;
+}
+.navigation-extended .top-section .menu-close-btn {
+  width: 100px;
+  transition: 0.2s;
+}
+.navigation-extended .top-section:hover {
+  color: #46464d;
+  transition: 0.15s;
+}
+.navigation-extended .navigation-container {
+  margin: 0;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   overflow: hidden;
-  animation-name: openRight;
+  animation-name: open-top;
   animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-  background: linear-gradient(to bottom, #18181d, #151518);
   border-radius: 0 10px 10px 0;
   padding: 1em;
   list-style-type: none;
 }
-.navigation-container .link-helper {
+.navigation-extended .navigation-container li {
+  margin: 0.5em;
+}
+.navigation-extended .navigation-container li .link-helper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -26,30 +60,25 @@
   padding: 0.5em;
   border-radius: 10px;
 }
-.navigation-container .link-helper:hover {
+.navigation-extended .navigation-container li .link-helper p {
+  font-size: 2em;
+}
+.navigation-extended .navigation-container li .link-helper:hover {
   background: #46464d;
   transition: 0.2s;
 }
-.navigation-container .link-helper .navigation-icon {
+.navigation-extended .navigation-container li .link-helper .navigation-icon {
   margin: 10px 0;
-}
-.navigation-container img {
-  width: 40px;
-}
-.navigation-container .menu-close-btn {
-  transition: 0.2s;
-}
-.navigation-container .menu-close-btn:hover {
-  color: #46464d;
-  transition: 0.15s;
+  width: 15em;
+  max-width: 250px;
 }
 
-@keyframes openRight {
+@keyframes open-top {
   0% {
-    width: 0;
+    transform: translateY(-100%);
   }
   100% {
-    width: fit-content;
+    transform: translateY(0);
   }
 }
 

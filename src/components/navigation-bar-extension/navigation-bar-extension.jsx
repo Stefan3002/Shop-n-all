@@ -1,8 +1,8 @@
 import './navigation-bar-extension.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileOpened, getUser} from "../../store/profile/profile-selectors";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {CheckoutContext} from "../../context/checkout/checkout";
 import {setProfileOpened} from "../../store/profile/profile-actions";
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
@@ -13,7 +13,8 @@ import questionSVG from '../../utils/imgs/QuestionSVG.svg'
 import shopSVG from '../../utils/imgs/ShopSVG.svg'
 import houseSVG from '../../utils/imgs/HouseSVG.svg'
 import heartSVG from '../../utils/imgs/heartSVG.svg'
-
+import logo from '../../utils/imgs/LogoIMG.png'
+import cartSVG from "../../utils/imgs/CartSVG.svg";
 
 
 const NavigationBarExtension = () => {
@@ -21,24 +22,57 @@ const NavigationBarExtension = () => {
     const profileState = useSelector(getProfileOpened)
     const user = useSelector(getUser)
     const navigationOpened = useSelector(getNavigationOpened)
+    const {cartOpened, setCartOpened} = useContext(CheckoutContext)
+    const {items} = useContext(CheckoutContext)
+
+    const [userProfilePic, setUserProfilePic] = useState(userSVG)
+
+
+    useEffect(() => {
+        if(user) {
+            setUserProfilePic(user.photoURL)
+        }
+    }, [user])
+
 
     const openCloseNavigation = () => navigationOpened ? setTimeout(() => dispatch(setNavigationOpened(false)), timeToClose) : dispatch(setNavigationOpened(true))
 
-
+    const openCloseCart = () => cartOpened ? setCartOpened(false) : setCartOpened(true)
+    const openCloseProfile = () => {
+        openCloseNavigation()
+        profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
+    }
+    const redirect = useNavigate()
+    const redirectToProfile = () => {
+        dispatch(setNavigationOpened(false))
+        if(user)
+            redirect('/profile')
+        else
+            redirect('/auth')
+    }
+    const redirectHome = () => {
+        dispatch(setNavigationOpened(false))
+        redirect('/')
+    }
 
     return (
-        <div>
+        <div className='navigation-extended'>
+            <div className="top-section" onClick={redirectHome}>
+                <h1>Shop-n-All</h1>
+                <img src={logo} alt=""/>
+            </div>
             <ul className='navigation-container'>
-                <li onClick={openCloseNavigation}><i className="menu-close-btn fa fa-3x fa-solid fa-circle-xmark"></i></li>
-                <li onClick={openCloseNavigation}><Link className='link-helper' to='/' >Home  <span className='navigation-icon'><img src={houseSVG} alt=""/></span></Link></li>
-                <li onClick={openCloseNavigation}><Link className='link-helper' to='/shop' >Shop<span className='navigation-icon'><img src={shopSVG}
-                                                                                                         alt=""/></span></Link></li>
-                <li onClick={openCloseNavigation}><Link className='link-helper' to='/about' >About<span className='navigation-icon'><img src={questionSVG}
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/' ><p>Home</p>  <span className='navigation-icon'><img src={houseSVG} alt=""/></span></Link></li>
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/shop' ><p>Shop</p><span className='navigation-icon'><img src={shopSVG} alt=""/></span></Link></li>
+                <li onClick={openCloseNavigation}><Link className='link-helper' to='/about' ><p>About</p><span className='navigation-icon'><img src={questionSVG}
                                                                                                            alt=""/></span></Link></li>
-
-                {user ? <li onClick={openCloseNavigation}><Link className='link-helper' to='/favourites' >Favourites<span className='navigation-icon'><img
+                {user ? <li onClick={openCloseNavigation}><Link className='link-helper' to='/favourites' ><p>Favourites</p><span className='navigation-icon'><img
                     src={heartSVG} alt=""/></span></Link></li> : null }
             </ul>
+            <div className="bottom-section">
+                <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
+                <div className='user-icon' onClick={redirectToProfile}><span className='navigation-icon'><img src={user ? userProfilePic : userSVG} alt=""/></span></div>
+            </div>
         </div>
     )
 }

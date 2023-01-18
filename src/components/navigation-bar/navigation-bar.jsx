@@ -7,7 +7,6 @@ import {CheckoutContext} from "../../context/checkout/checkout";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileOpened, getUser} from "../../store/profile/profile-selectors";
-import ProfileDropdown from "../profile-dropdown/profile-dropdown";
 import NavigationBarExtension from "../navigation-bar-extension/navigation-bar-extension";
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
 import {getNavigationOpened} from "../../store/navigation/navigation-selectors";
@@ -35,31 +34,21 @@ const NavigationBar = () => {
     const {items} = useContext(CheckoutContext)
 
 
-    const openCloseNavigation = () => navigationOpened ? dispatch(setNavigationOpened(false)) : dispatch(setNavigationOpened(true))
+    const openNavigation = () => dispatch(setNavigationOpened(true))
+    const closeNavigation = () => dispatch(setNavigationOpened(false))
 
     const openCloseCart = () => cartOpened ? setCartOpened(false) : setCartOpened(true)
     const openCloseProfile = () => {
-        openCloseNavigation()
+        closeNavigation()
         profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
     }
 
     return (
         <div className='body-container'>
-
-            {
-                profileState ? <ProfileDropdown /> : null
-            }
-
             <div className='navigation'>
-                {/*<div className="custom-shape-divider-top-1663860861">*/}
-                {/*    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"*/}
-                {/*         preserveAspectRatio="none">*/}
-                {/*        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>*/}
-                {/*    </svg>*/}
-                {/*</div>*/}
-                <div className="navigation-wrapper">
-
-                    {navigationOpened ? <div><Blur /><NavigationBarExtension /></div> : <div className='menu-icon'><i onClick={openCloseNavigation} className="fa fa-3x fa-solid fa-bars"></i></div>}
+                <div className="navigation-wrapper" onMouseEnter={openNavigation}>
+                    {navigationOpened ? <NavigationBarExtension /> : null}
+                    <i style={{color: `white`}} className="fa fa-3x fa-solid fa-bars"></i>
                     <Link className='logo-img' to='/'><img src={logoIMG} alt=""/></Link>
                     <div className="right-icons">
                         <div className='cart-icon' onClick={openCloseCart}><img src={cartSVG} alt=""/><span className='navigation-icon'>{items.length}</span></div>
