@@ -6,9 +6,6 @@ import {PopupContext} from "../../context/popup/popup";
 import {createAccountGoogle, createUserDoc} from "../../utils/firebase/firebase";
 import {useDispatch} from "react-redux";
 import {setUser} from "../../store/profile/profile-actions";
-import Benefits from "../benefits/benefits";
-import ItemHomePage from "../item-home-page/item-home-page.tsx";
-import ReviewsHomePage from "../reviews-home-page/reviews-home-page.tsx";
 import Parallax from "../Parallax/parallax.tsx";
 import parallaxImg1 from '../../utils/imgs-landing-page/parallaxImg.jpg'
 import parallaxImg2 from '../../utils/imgs-landing-page/parallaxImg2.jpg'
@@ -17,23 +14,6 @@ import parallaxImg4 from '../../utils/imgs-landing-page/parallaxImg4.jpg'
 import parallaxImg5 from '../../utils/imgs-landing-page/parallaxImg5.jpg'
 
 const HomePage = () => {
-
-    const dispatch = useDispatch()
-    const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
-
-    const createAccountGoogleFace = async () => {
-        const response = await createAccountGoogle()
-        const userData = response.user
-        setPopUpText(`Hello, ${userData.displayName}`)
-        setPoppedUp(true)
-        setPopUpType('success')
-        setTimeout(() => {
-            setPoppedUp(false)
-        }, 2500)
-        await createUserDoc(userData)
-        dispatch(setUser(userData))
-    }
-
     const parallaxImgs = [
         {
             img: parallaxImg1,
@@ -80,14 +60,6 @@ const HomePage = () => {
                     </div>
                     <div className="hero" />
                 </div>
-
-                {/*<div className="home-page-wrapper">*/}
-                {/*    <Benefits />*/}
-                {/*</div>*/}
-                {/*<ItemHomePage />*/}
-                {/*<div className="home-page-wrapper">*/}
-                {/*    <ReviewsHomePage />*/}
-                {/*</div>*/}
                 <Parallax data={parallaxImgs} />
 
                 {/*{Photo by <a href="https://unsplash.com/ja/@wesleyphotography?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wesley Tingey</a> on <a href="https://unsplash.com/s/photos/fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/}

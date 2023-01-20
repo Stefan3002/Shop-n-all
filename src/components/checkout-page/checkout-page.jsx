@@ -1,15 +1,15 @@
 import './checkout-page.css'
-import {useContext, useEffect, useRef, useState} from "react";
-import {CheckoutContext, getCartTotal, getNumberOfItems} from "../../context/checkout/checkout";
+import {useContext, useEffect, useState} from "react";
 import CheckoutItem from "../checkout-item/checkout-item";
 import Button from "../button/button";
 import {useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
 import {addOrderToDB, getAddresses} from "../../utils/firebase/firebase";
 import AddressInput from "../AddressInput/address-input";
-import PaymentForm from "../payment-form/payment-form";
+import {getCartItems} from "../../store/checkout/checkout-selectors.";
+import {getCartTotal, getNumberOfItems} from "../../store/checkout/utils";
 const CheckoutPage = () => {
-    const {items} = useContext(CheckoutContext)
+    const items = useSelector(getCartItems)
     const user = useSelector(getUser)
     const [addresses, setAddresses] = useState({})
 

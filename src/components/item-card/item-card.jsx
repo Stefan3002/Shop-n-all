@@ -1,18 +1,20 @@
 import './item-card.css'
 import Button from "../button/button";
 import {useContext, useEffect} from "react";
-import {CheckoutContext} from "../../context/checkout/checkout";
 import {PopupContext} from "../../context/popup/popup";
 import {FavouritesContext} from "../../context/favourites/favourites";
 import {addFavouriteToDB, retrieveFavourites, updateDocument} from "../../utils/firebase/firebase";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "../../store/profile/profile-selectors";
+import {getCartItems} from "../../store/checkout/checkout-selectors.";
+import {setCartItems} from "../../store/checkout/checkout-actions";
 
 
 
 const ItemCard = ({item, animationDelay}) => {
-    const {items, setItems} = useContext(CheckoutContext)
+    const items = useSelector(getCartItems)
+    const dispatch = useDispatch()
     const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
     let name, imageUrl, price, id
     if(item) {
@@ -52,10 +54,10 @@ const ItemCard = ({item, animationDelay}) => {
                 else
                     return oldItem
             })
-            setItems(newItems)
+            dispatch(setCartItems(newItems))
         }
         else
-            setItems([...items, {item, quantity: 1}])
+            dispatch(setCartItems([...items, {item, quantity: 1}]))
 
     }
     const addToFavourites = async () => {
@@ -112,7 +114,6 @@ const ItemCard = ({item, animationDelay}) => {
                 <div className="main">
                     <Link to={`/shop/${item.category}/${id.toString()}`}>
                         <img src={imageUrl} alt=""/>
-                        {console.log(imageUrl)}
                     </Link>
                     {/*<i className="fa fa-xl fa-solid fa-cart-plus"></i>*/}
                     <h2 className='item-name'>{name.slice(0,10)} {name.length > 8 ? '...' : null}</h2>
@@ -124,7 +125,6 @@ const ItemCard = ({item, animationDelay}) => {
 
                 <div className="utils">
                     <p className='item-price'><i className="fa fa-solid fa-coins"></i>{price}$</p>
-                    {/*<p>{description ? description.slice(0,50) : null}</p>*/}
                     <div className="stars">
                         {starAverage >= 1 ? <i className="fa-solid fa-star"></i> : null}
                         {starAverage >= 2 ? <i className="fa-solid fa-star"></i> : null}

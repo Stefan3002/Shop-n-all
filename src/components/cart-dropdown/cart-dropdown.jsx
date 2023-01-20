@@ -1,23 +1,24 @@
 import './cart-dropdown.css'
 import CartDropdownItem from "../cart-dropdown-item/cart-dropdown-item";
 import {useContext} from "react";
-import {CheckoutContext, getCartTotal} from "../../context/checkout/checkout";
 import Button from "../button/button";
-import {Link, useNavigate} from "react-router-dom";
+import {Link,} from "react-router-dom";
 import questionMark from '../../utils/imgs/question.svg'
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getCartItems, getCartOpened} from "../../store/checkout/checkout-selectors.";
+import {setCartOpened} from "../../store/checkout/checkout-actions";
+import {getCartTotal} from "../../store/checkout/utils";
 const CartDropdown = () => {
-    const {items,cartOpened, setCartOpened} = useContext(CheckoutContext)
-    const openCloseCart = () => {
-        cartOpened ? setCartOpened(false) : setCartOpened(true)
-    }
+    const cartOpened = useSelector(getCartOpened)
+    const items = useSelector(getCartItems)
     const dispatch = useDispatch()
-    const redirect = useNavigate()
+    const openCloseCart = () => {
+        cartOpened ? dispatch(setCartOpened(false)) : dispatch(setCartOpened(true))
+    }
     const redirectToCheckout = () => {
-        setCartOpened(false)
+        dispatch(setCartOpened(false))
         dispatch(setNavigationOpened(false))
-
     }
 
     return (

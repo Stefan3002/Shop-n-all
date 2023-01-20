@@ -2,11 +2,8 @@ import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOu
 import {collection, doc, getDoc, getDocs, getFirestore, query, setDoc, updateDoc} from 'firebase/firestore'
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
-import {getCartTotal} from "../../context/checkout/checkout";
-import order from "../../components/Order/order";
+import {getCartTotal} from "../../store/checkout/utils";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

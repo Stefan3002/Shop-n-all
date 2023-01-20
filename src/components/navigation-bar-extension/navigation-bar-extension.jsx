@@ -1,10 +1,8 @@
 import './navigation-bar-extension.css'
 import {Link, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {getProfileOpened, getUser} from "../../store/profile/profile-selectors";
-import {useContext, useEffect, useState} from "react";
-import {CheckoutContext} from "../../context/checkout/checkout";
-import {setProfileOpened} from "../../store/profile/profile-actions";
+import {useSelector} from "react-redux";
+import {getUser} from "../../store/profile/profile-selectors";
+import {useEffect, useState} from "react";
 import {setNavigationOpened} from "../../store/navigation/navigation-actions";
 import {getNavigationOpened} from "../../store/navigation/navigation-selectors";
 import {timeToClose} from "../../store/navigation/navigation-reducer";
@@ -17,13 +15,9 @@ import logo from '../../utils/imgs/LogoIMG.png'
 import cartSVG from "../../utils/imgs/CartSVG.svg";
 
 
-const NavigationBarExtension = () => {
-    const dispatch = useDispatch()
-    const profileState = useSelector(getProfileOpened)
+const NavigationBarExtension = ({items, openCloseCart, dispatch}) => {
     const user = useSelector(getUser)
     const navigationOpened = useSelector(getNavigationOpened)
-    const {cartOpened, setCartOpened} = useContext(CheckoutContext)
-    const {items} = useContext(CheckoutContext)
 
     const [userProfilePic, setUserProfilePic] = useState(userSVG)
 
@@ -37,11 +31,6 @@ const NavigationBarExtension = () => {
 
     const openCloseNavigation = () => navigationOpened ? setTimeout(() => dispatch(setNavigationOpened(false)), timeToClose) : dispatch(setNavigationOpened(true))
 
-    const openCloseCart = () => cartOpened ? setCartOpened(false) : setCartOpened(true)
-    const openCloseProfile = () => {
-        openCloseNavigation()
-        profileState ? dispatch(setProfileOpened(false)) : dispatch(setProfileOpened(true))
-    }
     const redirect = useNavigate()
     const redirectToProfile = () => {
         dispatch(setNavigationOpened(false))

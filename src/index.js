@@ -4,15 +4,12 @@ import './index.sass';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
-import {CheckoutContextProvider} from "./context/checkout/checkout";
 import {PopupContextProvider} from "./context/popup/popup";
 import {FavouritesContextProvider} from "./context/favourites/favourites";
 import {ItemsContextProvider} from "./context/items/items";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
 import * as serviceWorker from './serviceWorkerRegistration'
-import {Elements} from '@stripe/react-stripe-js'
-import {stripePromise} from './utils/stripe/stripe'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,11 +19,7 @@ root.render(
               <PopupContextProvider>
                   <FavouritesContextProvider>
                       <ItemsContextProvider>
-                          <CheckoutContextProvider>
-                              <Elements stripe={stripePromise}>
-                                  <App />
-                              </Elements>
-                          </CheckoutContextProvider>
+                          <App />
                       </ItemsContextProvider>
                   </FavouritesContextProvider>
               </PopupContextProvider>

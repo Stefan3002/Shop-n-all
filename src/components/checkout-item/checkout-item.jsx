@@ -1,15 +1,17 @@
 import './checkout-item.css'
 import {useContext} from "react";
 import {PopupContext} from "../../context/popup/popup";
-import {CheckoutContext} from "../../context/checkout/checkout";
 import moneySVG from '../../utils/imgs/MoneySVG.svg'
+import {useDispatch, useSelector} from "react-redux";
+import {getCartItems} from "../../store/checkout/checkout-selectors.";
+import {setCartItems} from "../../store/checkout/checkout-actions";
 
 const CheckoutItem = ({data}) => {
     const {imageUrl, name, price} = data.item
     const {quantity} = data
     const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
-    const {items, setItems} = useContext(CheckoutContext)
-
+    const items = useSelector(getCartItems)
+    const dispatch = useDispatch()
 
     const removeItemFromCart = () => {
         setPoppedUp(true)
@@ -18,14 +20,14 @@ const CheckoutItem = ({data}) => {
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)
-        setItems(items.filter((oldItem) => oldItem.item.id !== data.item.id))
+        dispatch(setCartItems(items.filter((oldItem) => oldItem.item.id !== data.item.id)))
     }
 
     const increaseQuantity = () => {
         const foundItem = items.find((item) => item === data)
         foundItem.quantity++
         const newItems = [...items]
-        setItems(newItems)
+        dispatch(setCartItems(newItems))
     }
 
 
@@ -35,7 +37,7 @@ const CheckoutItem = ({data}) => {
         if(foundItem.quantity <= 0)
             removeItemFromCart()
         else
-            setItems([...items])
+            dispatch(setCartItems([...items]))
 
     }
 

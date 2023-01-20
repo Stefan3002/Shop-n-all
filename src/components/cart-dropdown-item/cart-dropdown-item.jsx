@@ -1,12 +1,15 @@
 import './cart-dropdown-item.css'
 import {useContext} from "react";
-import {CheckoutContext} from "../../context/checkout/checkout";
 import {PopupContext} from "../../context/popup/popup";
+import {useDispatch, useSelector} from "react-redux";
+import {getCartItems} from "../../store/checkout/checkout-selectors.";
+import {setCartItems} from "../../store/checkout/checkout-actions";
 const CartDropdownItem = ({data}) => {
     const {name, price, imageUrl} = data.item
     const {quantity} = data
     const {setPoppedUp, setPopUpText, setPopUpType} = useContext(PopupContext)
-    const {items, setItems} = useContext(CheckoutContext)
+    const items = useSelector(getCartItems)
+    const dispatch = useDispatch()
     const removeItemFromCart = () => {
         setPoppedUp(true)
         setPopUpText('Item removed from cart.')
@@ -14,7 +17,7 @@ const CartDropdownItem = ({data}) => {
         setTimeout(() => {
             setPoppedUp(false)
         }, 2500)
-        setItems(items.filter((oldItem) => oldItem.item.id !== data.item.id))
+        dispatch(setCartItems(items.filter((oldItem) => oldItem.item.id !== data.item.id)))
     }
 
 
