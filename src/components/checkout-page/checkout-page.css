@@ -1,6 +1,11 @@
 .checkout-page-container {
   width: 80%;
-  margin: 1em auto;
+  margin: 10em auto;
+}
+.checkout-page-container .master .checkout-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .checkout-page-container .addresses-selector .address-container {
   display: flex;

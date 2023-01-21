@@ -8,10 +8,14 @@ import {addOrderToDB, getAddresses} from "../../utils/firebase/firebase";
 import AddressInput from "../AddressInput/address-input";
 import {getCartItems} from "../../store/checkout/checkout-selectors.";
 import {getCartTotal, getNumberOfItems} from "../../store/checkout/utils";
+import emailjs from '@emailjs/browser';
+import {useNavigate} from "react-router-dom";
+
 const CheckoutPage = () => {
     const items = useSelector(getCartItems)
     const user = useSelector(getUser)
     const [addresses, setAddresses] = useState({})
+    const redirect = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -20,18 +24,34 @@ const CheckoutPage = () => {
         })()
     }, [])
 
+    const emailParams = {
+        user_name: user.displayName,
+        email_dest: user.email,
+        items: items.toString(),
+        total: getCartTotal(items)
+    }
+    console.log(JSON.stringify(items))
     const createOrder = async () => {
         await addOrderToDB(items, user)
+        emailjs.send('service_d8si4b3', 'template_dktmikz', emailParams, 'mtFLxN0qfwSBF7ft1')
+            .then((result) => {
+            }, (error) => {
+                console.log(error)
+            });
+        redirect('/profile')
     }
+
 
 
     return (
         <div className='checkout-page-container'>
             <div className="master">
                 <h1>Checkout.</h1>
-                {items.map((item) => {
-                    return <CheckoutItem key={item.id} data={item} />
-                })}
+                <div className="checkout-items">
+                    {items.map((item) => {
+                        return <CheckoutItem key={item.id} data={item} />
+                    })}
+                </div>
             </div>
             <div className="aside">
                 <h2 className='total-title'>Total: </h2>

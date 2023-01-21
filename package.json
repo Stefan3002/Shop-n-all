@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@stripe/react-stripe-js": "^1.14.1",
     "@stripe/stripe-js": "^1.42.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -13,6 +14,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "dotenv": "^16.0.3",
+    "email-js": "^2.0.2",
     "firebase": "^9.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
