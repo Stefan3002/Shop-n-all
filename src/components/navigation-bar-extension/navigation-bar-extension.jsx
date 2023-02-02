@@ -47,7 +47,7 @@ const NavigationBarExtension = ({items, openCloseCart, dispatch}) => {
     return (
         <div className='navigation-extended'>
             <div className="top-section" onClick={redirectHome}>
-                <h1>Shop-n-All</h1>
+                {/*<h1>Shop-n-All</h1>*/}
                 <img src={logo} alt=""/>
             </div>
             <ul className='navigation-container'>

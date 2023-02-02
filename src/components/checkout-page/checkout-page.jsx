@@ -24,12 +24,24 @@ const CheckoutPage = () => {
         })()
     }, [])
 
+    let itemsOrdered = ''
+    for(let item of items){
+        itemsOrdered += item.item.name
+        itemsOrdered += ' Qty: '
+        itemsOrdered += item.quantity
+        itemsOrdered += ' Price: '
+        itemsOrdered += item.item.price * item.quantity
+        itemsOrdered += '\n'
+    }
+
     const emailParams = {
         user_name: user.displayName,
         email_dest: user.email,
-        items: items.toString(),
-        total: getCartTotal(items)
+        items: itemsOrdered,
+        total: getCartTotal(items),
+        address: addresses.address
     }
+    console.log(addresses.address)
     console.log(JSON.stringify(items))
     const createOrder = async () => {
         await addOrderToDB(items, user)
